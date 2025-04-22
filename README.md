@@ -1,30 +1,96 @@
-# Portfolio website
+# Portfolio Website Structure
 
-*Automatically synced with your [v0.dev](https://v0.dev) deployments*
+A modular, scalable portfolio website built with Next.js, shadcn/ui components, and Tailwind CSS.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/artquakes-projects/v0-portfolio-website)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.dev-black?style=for-the-badge)](https://v0.dev/chat/projects/Dh7QBt6s0nZ)
+## Project Structure
 
-## Overview
+\`\`\`
+portfolio/
+├── app/                    # Next.js App Router
+│   ├── about/              # About page
+│   ├── blog/               # Blog section
+│   │   └── [slug]/         # Individual blog post
+│   ├── contact/            # Contact page
+│   ├── projects/           # Projects section
+│   │   └── [slug]/         # Individual project
+│   ├── testimonials/       # Testimonials page
+│   ├── globals.css         # Global styles
+│   ├── layout.tsx          # Root layout
+│   └── page.tsx            # Home page
+├── components/             # Reusable components
+│   ├── sections/           # Page sections
+│   │   ├── hero-section.tsx
+│   │   ├── about-preview.tsx
+│   │   └── ...
+│   ├── ui/                 # UI components from shadcn
+│   ├── navigation.tsx      # Navigation component
+│   ├── footer.tsx          # Footer component
+│   └── ...
+├── lib/                    # Utility functions
+│   └── utils.ts
+├── public/                 # Static assets
+└── ...
+\`\`\`
 
-This repository will stay in sync with your deployed chats on [v0.dev](https://v0.dev).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.dev](https://v0.dev).
+## Core Features
+
+- **Responsive Design**: Fully responsive layout that works on all devices
+- **Dark Mode Support**: Toggle between light and dark themes
+- **Modular Components**: Reusable components for easy maintenance
+- **Accessibility**: Built with accessibility in mind
+- **Performance Optimized**: Fast loading times and efficient asset management
+
+## Pages
+
+1. **Home**: Introduction with sections for about, featured projects, testimonials, and blog
+2. **About**: Detailed information about skills, experience, and background
+3. **Projects**: Gallery of projects with filtering capability
+4. **Project Detail**: In-depth look at individual projects
+5. **Testimonials**: Client and colleague testimonials
+6. **Blog**: Articles and insights
+7. **Blog Post**: Individual blog articles
+8. **Contact**: Contact form and information
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies:
+   \`\`\`bash
+   npm install
+   \`\`\`
+3. Run the development server:
+   \`\`\`bash
+   npm run dev
+   \`\`\`
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Customization
+
+### Adding a New Page
+
+1. Create a new folder in the `app` directory
+2. Add a `page.tsx` file with your content
+3. Update the navigation component to include the new page
+
+### Adding a New Component
+
+1. Create a new file in the `components` directory
+2. Import and use the component in your pages
+
+### Styling
+
+- Use Tailwind CSS classes for styling
+- Customize the theme in `tailwind.config.ts`
+- Add global styles in `app/globals.css`
 
 ## Deployment
 
-Your project is live at:
+This project can be easily deployed to Vercel:
 
-**[https://vercel.com/artquakes-projects/v0-portfolio-website](https://vercel.com/artquakes-projects/v0-portfolio-website)**
+1. Push your code to a GitHub repository
+2. Import the project in Vercel
+3. Deploy
 
-## Build your app
+## License
 
-Continue building your app on:
-
-**[https://v0.dev/chat/projects/Dh7QBt6s0nZ](https://v0.dev/chat/projects/Dh7QBt6s0nZ)**
-
-## How It Works
-
-1. Create and modify your project using [v0.dev](https://v0.dev)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+MIT

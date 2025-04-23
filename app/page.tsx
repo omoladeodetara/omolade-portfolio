@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <div className="container py-12 px-4 mx-auto max-w-7xl">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold tracking-tight mb-4">Omolade Jordan Odetara</h1>
+        <h1 className="text-4xl font-bold tracking-tight mb-4">Omolade Odetara</h1>
         <p className="text-xl text-[#62748e] max-w-2xl mx-auto">Product Professional | Deep Tech | Interoperability</p>
         <div className="flex flex-wrap justify-center gap-2 mt-4">
           <Badge className="bg-[#615fff] hover:bg-[#615fff]/80">Space Exploration</Badge>
@@ -141,13 +141,13 @@ export default function Home() {
           </h2>
         </div>
         <div className="md:col-span-3">
-          <h2 className="text-xl font-bold flex items-center text-[#00d5be]">
-            <Code className="mr-2" /> Side Projects
+          <h2 className="text-xl font-bold flex items-center text-[#ffb86a]">
+            <Rocket className="mr-2" /> Space Activities
           </h2>
         </div>
         <div className="md:col-span-3">
-          <h2 className="text-xl font-bold flex items-center text-[#ffb86a]">
-            <Rocket className="mr-2" /> Space Activities
+          <h2 className="text-xl font-bold flex items-center text-[#00d5be]">
+            <Code className="mr-2" /> Side Projects
           </h2>
         </div>
       </div>
@@ -259,58 +259,6 @@ export default function Home() {
             />
           </div>
 
-          {/* Side Projects Timeline */}
-          <div className="md:col-span-3 space-y-8 relative">
-            <div className="absolute top-0 bottom-0 left-3 w-px bg-[#00d5be]/30 z-0"></div>
-
-            <div className="h-[100px] md:h-[120px]"></div>
-
-            <MinorTimelineItem
-              id="side-2023"
-              color="#00d5be"
-              title="Space Data Visualization Tool"
-              period="Mar - Jun 2023"
-              connectionId="2023-leanspace"
-              isExpanded={expandedItems.has("side-2023")}
-              onToggleExpand={() => toggleExpand("side-2023")}
-              details={sideProjects.find((exp) => exp.id === "side-2023")}
-            />
-
-            <MinorTimelineItem
-              id="side-2021"
-              color="#00d5be"
-              title="API Documentation Platform"
-              period="May - Dec 2021"
-              connectionId="2021-bossbusworld"
-              isExpanded={expandedItems.has("side-2021")}
-              onToggleExpand={() => toggleExpand("side-2021")}
-              details={sideProjects.find((exp) => exp.id === "side-2021")}
-            />
-
-            <MinorTimelineItem
-              id="side-2019"
-              color="#00d5be"
-              title="EdTech Consulting"
-              period="Jun 2019 - Dec 2020"
-              connectionId="2019-pledre"
-              isExpanded={expandedItems.has("side-2019")}
-              onToggleExpand={() => toggleExpand("side-2019")}
-              details={sideProjects.find((exp) => exp.id === "side-2019")}
-            />
-
-            <MinorTimelineItem
-              id="side-2017"
-              color="#00d5be"
-              title="Interactive Portfolio Builder"
-              period="Aug 2017 - Mar 2018"
-              connectionId="2017-artquake"
-              isExpanded={expandedItems.has("side-2017")}
-              onToggleExpand={() => toggleExpand("side-2017")}
-              details={sideProjects.find((exp) => exp.id === "side-2017")}
-              last={true}
-            />
-          </div>
-
           {/* Volunteer Space Activities Timeline */}
           <div className="md:col-span-3 space-y-8 relative">
             <div className="absolute top-0 bottom-0 left-3 w-px bg-[#ffb86a]/30 z-0"></div>
@@ -381,6 +329,58 @@ export default function Home() {
               isExpanded={expandedItems.has("vol-2020-spacegen")}
               onToggleExpand={() => toggleExpand("vol-2020-spacegen")}
               details={volunteerActivities.find((exp) => exp.id === "vol-2020-spacegen")}
+              last={true}
+            />
+          </div>
+
+          {/* Side Projects Timeline */}
+          <div className="md:col-span-3 space-y-8 relative">
+            <div className="absolute top-0 bottom-0 left-3 w-px bg-[#00d5be]/30 z-0"></div>
+
+            <div className="h-[100px] md:h-[120px]"></div>
+
+            <MinorTimelineItem
+              id="side-2023"
+              color="#00d5be"
+              title="Space Data Visualization Tool"
+              period="Mar - Jun 2023"
+              connectionId="2023-leanspace"
+              isExpanded={expandedItems.has("side-2023")}
+              onToggleExpand={() => toggleExpand("side-2023")}
+              details={sideProjects.find((exp) => exp.id === "side-2023")}
+            />
+
+            <MinorTimelineItem
+              id="side-2021"
+              color="#00d5be"
+              title="API Documentation Platform"
+              period="May - Dec 2021"
+              connectionId="2021-bossbusworld"
+              isExpanded={expandedItems.has("side-2021")}
+              onToggleExpand={() => toggleExpand("side-2021")}
+              details={sideProjects.find((exp) => exp.id === "side-2021")}
+            />
+
+            <MinorTimelineItem
+              id="side-2019"
+              color="#00d5be"
+              title="EdTech Consulting"
+              period="Jun 2019 - Dec 2020"
+              connectionId="2019-pledre"
+              isExpanded={expandedItems.has("side-2019")}
+              onToggleExpand={() => toggleExpand("side-2019")}
+              details={sideProjects.find((exp) => exp.id === "side-2019")}
+            />
+
+            <MinorTimelineItem
+              id="side-2017"
+              color="#00d5be"
+              title="Interactive Portfolio Builder"
+              period="Aug 2017 - Mar 2018"
+              connectionId="2017-artquake"
+              isExpanded={expandedItems.has("side-2017")}
+              onToggleExpand={() => toggleExpand("side-2017")}
+              details={sideProjects.find((exp) => exp.id === "side-2017")}
               last={true}
             />
           </div>

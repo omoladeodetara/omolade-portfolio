@@ -3,54 +3,45 @@ import { fallbackBlogPosts } from "@/lib/fetch-blog-posts"
 
 export async function GET() {
   try {
-    const query = `
-      query GetUserArticles($username: String!, $page: Int!) {
-        user(username: $username) {
-          publication {
-            posts(page: $page) {
-              title
-              brief
-              slug
-              coverImage
-              dateAdded
-              tags {
-                name
-              }
-            }
-          }
-        }
-      }
-    `
-
-    const variables = {
-      username: "omoladeodetara",
-      page: 0,
-    }
-
+    // Simplified query
     const response = await fetch("https://api.hashnode.com/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        query,
-        variables,
+        query: `
+          query {
+            user(username: "omoladeodetara") {
+              publication {
+                posts(page: 0) {
+                  title
+                  brief
+                  slug
+                  coverImage
+                  dateAdded
+                  tags {
+                    name
+                  }
+                }
+              }
+            }
+          }
+        `,
       }),
-      next: { revalidate: 3600 }, // Revalidate every hour
     })
 
     if (!response.ok) {
-      throw new Error(`API responded with status: ${response.status}`)
+      return NextResponse.json(fallbackBlogPosts)
     }
 
     const { data } = await response.json()
 
     if (!data?.user?.publication?.posts) {
-      console.error("No posts found or unexpected API response structure")
       return NextResponse.json(fallbackBlogPosts)
     }
 
-    const posts = data.user.publication.posts.slice(0, 3).map((post: any) => ({
+    const posts = data.user.publication.posts.slice(0, 3).map((post) => ({
       id: post.slug,
       title: post.title,
       brief: post.brief,
@@ -61,7 +52,7 @@ export async function GET() {
         month: "long",
         day: "numeric",
       }),
-      tags: post.tags.map((tag: any) => tag.name),
+      tags: post.tags.map((tag) => tag.name),
     }))
 
     return NextResponse.json(posts)

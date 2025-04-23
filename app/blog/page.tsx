@@ -11,14 +11,27 @@ export const metadata: Metadata = {
 
 export default async function BlogPage() {
   // Fetch blog posts server-side
-  const posts = await fetch(
-    `${process.env.NEXT_PUBLIC_VERCEL_URL || process.env.VERCEL_URL || "http://localhost:3000"}/api/blog-posts`,
-    {
+  let posts = fallbackBlogPosts
+
+  try {
+    // Use absolute URL with the environment variable
+    const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+      : "http://localhost:3000"
+
+    const response = await fetch(`${baseUrl}/api/blog-posts`, {
       next: { revalidate: 3600 }, // Revalidate every hour
-    },
-  )
-    .then((res) => res.json())
-    .catch(() => fallbackBlogPosts)
+    })
+
+    if (!response.ok) {
+      throw new Error(`API responded with status: ${response.status}`)
+    }
+
+    posts = await response.json()
+  } catch (error) {
+    console.error("Error fetching blog posts:", error)
+    // Use fallback posts (already assigned)
+  }
 
   return (
     <div className="container py-10">

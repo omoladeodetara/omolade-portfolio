@@ -16,9 +16,11 @@ export function FeaturedBlogPosts() {
     async function loadBlogPosts() {
       setIsLoading(true)
       try {
+        // Use absolute URL to ensure we're hitting the correct endpoint
         const response = await fetch("/api/blog-posts")
 
         if (!response.ok) {
+          console.error(`API responded with status: ${response.status}`)
           throw new Error(`API responded with status: ${response.status}`)
         }
 

@@ -11,7 +11,6 @@ import { cn } from "@/lib/utils"
 
 const navItems = [
   { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ]
@@ -46,7 +45,7 @@ export function Navigation() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link href="/" className="font-bold text-xl">
-            Your Name
+            Omolade Odetara
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">

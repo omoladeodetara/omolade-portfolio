@@ -1,19 +1,86 @@
 import type { Metadata } from "next"
-import { PageHeader } from "@/components/page-header"
-import { BlogFilters } from "@/components/blog-filters"
-import { BlogGrid } from "@/components/blog-grid"
+import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { fallbackBlogPosts } from "@/lib/fetch-blog-posts"
 
 export const metadata: Metadata = {
-  title: "Blog | Your Portfolio",
-  description: "Articles, insights, and thoughts on design and development",
+  title: "Blog | Omolade Odetara",
+  description: "Articles, insights, and thoughts on product development, engineering, and technology",
 }
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  // Fetch blog posts server-side
+  const posts = await fetch(
+    `${process.env.NEXT_PUBLIC_VERCEL_URL || process.env.VERCEL_URL || "http://localhost:3000"}/api/blog-posts`,
+    {
+      next: { revalidate: 3600 }, // Revalidate every hour
+    },
+  )
+    .then((res) => res.json())
+    .catch(() => fallbackBlogPosts)
+
   return (
     <div className="container py-10">
-      <PageHeader heading="Blog" subheading="Articles, insights, and thoughts on design and development" />
-      <BlogFilters />
-      <BlogGrid />
+      <div className="flex items-center mb-8">
+        <Button variant="ghost" size="sm" asChild className="gap-1">
+          <Link href="/">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Home
+          </Link>
+        </Button>
+      </div>
+
+      <div className="flex flex-col items-center text-center space-y-4 pb-10 pt-6">
+        <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">Blog</h1>
+        <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed">
+          Articles, insights, and thoughts on product development, engineering, and technology
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.map((post) => (
+          <Link
+            key={post.id}
+            href={`https://omoladeodetara.hashnode.dev/${post.slug}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group"
+          >
+            <div className="border rounded-lg overflow-hidden h-full flex flex-col transition-all duration-200 hover:shadow-md">
+              <div className="aspect-video relative overflow-hidden">
+                <img
+                  src={
+                    post.coverImage || `/placeholder.svg?height=400&width=600&query=${encodeURIComponent(post.title)}`
+                  }
+                  alt={post.title}
+                  className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </div>
+              <div className="p-4 flex-1 flex flex-col">
+                <div className="text-sm text-muted-foreground mb-2">{post.dateAdded}</div>
+                <h2 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{post.title}</h2>
+                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">{post.brief}</p>
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {post.tags.slice(0, 3).map((tag, index) => (
+                    <span key={index} className="bg-muted text-xs px-2 py-1 rounded">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      <div className="flex justify-center mt-12">
+        <Button asChild>
+          <a href="https://omoladeodetara.hashnode.dev" target="_blank" rel="noopener noreferrer">
+            Visit My Hashnode Blog
+          </a>
+        </Button>
+      </div>
     </div>
   )
 }

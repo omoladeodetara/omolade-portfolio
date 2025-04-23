@@ -7,6 +7,7 @@ import { Briefcase, GraduationCap, Award, Rocket, Code, ChevronDown, ChevronUp, 
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { FeaturedBlogPosts } from "@/components/sections/featured-blog-posts"
 
 export default function Home() {
   // Track expanded items by their IDs
@@ -39,353 +40,363 @@ export default function Home() {
   }
 
   return (
-    <div className="container py-12 px-4 mx-auto max-w-7xl">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold tracking-tight mb-4">Omolade Odetara</h1>
-        <p className="text-xl text-[#62748e] max-w-2xl mx-auto">Product Professional | Deep Tech | Interoperability</p>
-        <div className="flex flex-wrap justify-center gap-2 mt-4">
-          <Badge className="bg-[#615fff] hover:bg-[#615fff]/80">Space Exploration</Badge>
-          <Badge className="bg-[#615fff] hover:bg-[#615fff]/80">Air Travel</Badge>
-          <Badge className="bg-[#615fff] hover:bg-[#615fff]/80">Developer Experiences</Badge>
-          <Badge className="bg-[#615fff] hover:bg-[#615fff]/80">Infrastructure</Badge>
+    <div>
+      <div className="container py-12 px-4 mx-auto max-w-7xl">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold tracking-tight mb-4">Omolade Odetara</h1>
+          <p className="text-xl text-[#62748e] max-w-2xl mx-auto">
+            Product Professional | Deep Tech | Interoperability
+          </p>
+          <div className="flex flex-wrap justify-center gap-2 mt-4">
+            <Badge className="bg-[#615fff] hover:bg-[#615fff]/80">Space Exploration</Badge>
+            <Badge className="bg-[#615fff] hover:bg-[#615fff]/80">Air Travel</Badge>
+            <Badge className="bg-[#615fff] hover:bg-[#615fff]/80">Developer Experiences</Badge>
+            <Badge className="bg-[#615fff] hover:bg-[#615fff]/80">Infrastructure</Badge>
+          </div>
+          <div className="flex justify-center gap-4 mt-6">
+            <a href="mailto:omoladeodetara@gmail.com" className="text-[#00d5be] hover:underline">
+              omoladeodetara@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/omoladeodetara" className="text-[#00d5be] hover:underline">
+              LinkedIn
+            </a>
+            <a href="https://omoladeodetara.com/" className="text-[#00d5be] hover:underline">
+              Portfolio
+            </a>
+            <a href="https://omoladeodetara.hashnode.dev" className="text-[#00d5be] hover:underline">
+              Blog
+            </a>
+          </div>
         </div>
-        <div className="flex justify-center gap-4 mt-6">
-          <a href="mailto:omoladeodetara@gmail.com" className="text-[#00d5be] hover:underline">
-            omoladeodetara@gmail.com
-          </a>
-          <a href="https://www.linkedin.com/in/omoladeodetara" className="text-[#00d5be] hover:underline">
-            LinkedIn
-          </a>
-          <a href="https://omoladeodetara.com/" className="text-[#00d5be] hover:underline">
-            Portfolio
-          </a>
+
+        {/* Timeline Legend */}
+        <div className="flex flex-wrap justify-center gap-6 mb-10">
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full bg-[#615fff]"></div>
+            <span>Main Professional Experience</span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full bg-[#ffb86a]"></div>
+            <span>Volunteer Space Activities</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full bg-[#00d5be]"></div>
+            <span>Side & Freelance Projects</span>
+          </div>
+        </div>
+
+        {/* Education and Skills */}
+        <div className="mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <h2 className="text-2xl font-bold mb-6 flex items-center">
+              <GraduationCap className="mr-2 text-[#ffb86a]" /> Education
+            </h2>
+            <div className="space-y-4">
+              <EducationItem institution="Utiva" degree="Product School, Agile Product Management" />
+              <EducationItem
+                institution="Obafemi Awolowo University"
+                degree="Bachelor of Arts - BA, Fine Arts: Painting/Graphics"
+              />
+              <EducationItem institution="Ife Business School" degree="Business Development and Entrepreneurship" />
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold mb-6 flex items-center">
+              <Award className="mr-2 text-[#ffb86a]" /> Certifications
+            </h2>
+            <div className="space-y-4">
+              <Card>
+                <CardContent className="p-4">
+                  <p className="font-medium">Application Security Analyst Explorer Award</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="p-4">
+                  <p className="font-medium">Ch.DMP, PDG.SMDM, ACISMDM</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="p-4">
+                  <p className="font-medium">Toggl Hire Product Development Skill Test Certificate</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          <div>
+            <h2 className="text-2xl font-bold mb-6 flex items-center">
+              <Award className="mr-2 text-[#ffb86a]" /> Core Skills
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Product Delivery</Badge>
+              <Badge className="bg-[#314158] hover:bg-[#314158]/80">B2B</Badge>
+              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Stakeholder Management</Badge>
+              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Product Strategy</Badge>
+              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Developer Experience</Badge>
+              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Platform Strategy</Badge>
+            </div>
+          </div>
+        </div>
+
+        {/* Timeline Headers */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
+          <div className="md:col-span-6">
+            <h2 className="text-2xl font-bold flex items-center text-[#615fff]">
+              <Briefcase className="mr-2" /> Professional Experience
+            </h2>
+          </div>
+          <div className="md:col-span-3">
+            <h2 className="text-xl font-bold flex items-center text-[#ffb86a]">
+              <Rocket className="mr-2" /> Space Activities
+            </h2>
+          </div>
+          <div className="md:col-span-3">
+            <h2 className="text-xl font-bold flex items-center text-[#00d5be]">
+              <Code className="mr-2" /> Side Projects
+            </h2>
+          </div>
+        </div>
+
+        {/* Parallel Timelines */}
+        <div className="relative">
+          {/* Time markers */}
+          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-16 border-r border-dashed border-gray-200">
+            <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-white px-2 text-sm font-bold text-[#62748e]">
+              2024
+            </div>
+            <div className="absolute top-[20%] right-0 transform translate-x-1/2 -translate-y-1/2 bg-white px-2 text-sm font-bold text-[#62748e]">
+              2023
+            </div>
+            <div className="absolute top-[40%] right-0 transform translate-x-1/2 -translate-y-1/2 bg-white px-2 text-sm font-bold text-[#62748e]">
+              2022
+            </div>
+            <div className="absolute top-[60%] right-0 transform translate-x-1/2 -translate-y-1/2 bg-white px-2 text-sm font-bold text-[#62748e]">
+              2021
+            </div>
+            <div className="absolute top-[80%] right-0 transform translate-x-1/2 -translate-y-1/2 bg-white px-2 text-sm font-bold text-[#62748e]">
+              2020
+            </div>
+            <div className="absolute bottom-0 right-0 transform translate-x-1/2 translate-y-1/2 bg-white px-2 text-sm font-bold text-[#62748e]">
+              2017
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:pl-16">
+            {/* Main Professional Timeline */}
+            <div className="md:col-span-6 space-y-8 relative">
+              <div className="absolute top-0 bottom-0 left-3 w-px bg-[#615fff]/30 z-0"></div>
+
+              <MainTimelineItem
+                id="2024-sii"
+                color="#615fff"
+                title="Product"
+                company="Groupe SII"
+                companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2024-sii")?.companyLinkedIn}
+                period="July 2024 - Present"
+                location="France"
+                tags={["Airlines", "Travel", "AI Driven Dynamic Pricing", "Amadeus"]}
+                current={true}
+                connectionId="2024-sii"
+                isExpanded={expandedItems.has("2024-sii")}
+                onToggleExpand={() => toggleExpand("2024-sii")}
+                details={professionalExperiences.find((exp) => exp.id === "2024-sii")}
+              />
+
+              <MainTimelineItem
+                id="2023-leanspace"
+                color="#615fff"
+                title="Product Owner"
+                company="Leanspace"
+                companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2023-leanspace")?.companyLinkedIn}
+                period="November 2022 - August 2023"
+                location="Strasbourg, France"
+                tags={["Space", "Satellites", "SaaS"]}
+                connectionId="2023-leanspace"
+                isExpanded={expandedItems.has("2023-leanspace")}
+                onToggleExpand={() => toggleExpand("2023-leanspace")}
+                details={professionalExperiences.find((exp) => exp.id === "2023-leanspace")}
+              />
+
+              <MainTimelineItem
+                id="2021-bossbusworld"
+                color="#615fff"
+                title="Technical Product Manager (Developer Experience)"
+                company="Bossbusworld"
+                companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2021-bossbusworld")?.companyLinkedIn}
+                period="January 2021 - November 2022"
+                location="Lagos, Nigeria"
+                tags={["Travel", "SaaS", "Developer Ecosystem"]}
+                connectionId="2021-bossbusworld"
+                isExpanded={expandedItems.has("2021-bossbusworld")}
+                onToggleExpand={() => toggleExpand("2021-bossbusworld")}
+                details={professionalExperiences.find((exp) => exp.id === "2021-bossbusworld")}
+              />
+
+              <MainTimelineItem
+                id="2019-pledre"
+                color="#615fff"
+                title="Product Manager"
+                company="Pledre"
+                companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2019-pledre")?.companyLinkedIn}
+                period="January 2019 - January 2021"
+                location="Lagos, Nigeria"
+                tags={["Education", "Infrastructure", "B2B"]}
+                connectionId="2019-pledre"
+                isExpanded={expandedItems.has("2019-pledre")}
+                onToggleExpand={() => toggleExpand("2019-pledre")}
+                details={professionalExperiences.find((exp) => exp.id === "2019-pledre")}
+              />
+
+              <MainTimelineItem
+                id="2017-artquake"
+                color="#615fff"
+                title="Software Engineer"
+                company="ArtQuake"
+                companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2017-artquake")?.companyLinkedIn}
+                period="May 2017 - December 2018"
+                location="Lagos, Nigeria"
+                tags={["UI", "Interactivity", "Digital Experiences"]}
+                connectionId="2017-artquake"
+                isExpanded={expandedItems.has("2017-artquake")}
+                onToggleExpand={() => toggleExpand("2017-artquake")}
+                details={professionalExperiences.find((exp) => exp.id === "2017-artquake")}
+                last={true}
+              />
+            </div>
+
+            {/* Volunteer Space Activities Timeline */}
+            <div className="md:col-span-3 space-y-8 relative">
+              <div className="absolute top-0 bottom-0 left-3 w-px bg-[#ffb86a]/30 z-0"></div>
+
+              <div className="h-[100px] md:h-[120px]"></div>
+
+              <MinorTimelineItem
+                id="vol-2023-mva"
+                color="#ffb86a"
+                title="MVA - Lunar Technical Coordination"
+                period="Sep 2023 - Present"
+                connectionId="2023-leanspace"
+                isExpanded={expandedItems.has("vol-2023-mva")}
+                onToggleExpand={() => toggleExpand("vol-2023-mva")}
+                details={volunteerActivities.find((exp) => exp.id === "vol-2023-mva")}
+              />
+
+              <MinorTimelineItem
+                id="vol-2021-mva"
+                color="#ffb86a"
+                title="MVA - Interoperability Subgroup Co-Chair"
+                period="Jan 2021 - Sep 2023"
+                connectionId="2021-bossbusworld"
+                isExpanded={expandedItems.has("vol-2021-mva")}
+                onToggleExpand={() => toggleExpand("vol-2021-mva")}
+                details={volunteerActivities.find((exp) => exp.id === "vol-2021-mva")}
+              />
+
+              <MinorTimelineItem
+                id="vol-2020-spacehubs"
+                color="#ffb86a"
+                title="Spacehubs Africa Analyst"
+                period="Aug 2020 - Aug 2021"
+                connectionId="2020-spacehubs"
+                isExpanded={expandedItems.has("vol-2020-spacehubs")}
+                onToggleExpand={() => toggleExpand("vol-2020-spacehubs")}
+                details={volunteerActivities.find((exp) => exp.id === "vol-2020-spacehubs")}
+              />
+
+              <MinorTimelineItem
+                id="vol-2020-spaceapps"
+                color="#ffb86a"
+                title="NASA SpaceApps Lagos Lead"
+                period="Aug 2020 - Aug 2021"
+                connectionId="2020-spaceapps"
+                isExpanded={expandedItems.has("vol-2020-spaceapps")}
+                onToggleExpand={() => toggleExpand("vol-2020-spaceapps")}
+                details={volunteerActivities.find((exp) => exp.id === "vol-2020-spaceapps")}
+              />
+
+              <MinorTimelineItem
+                id="vol-2020-sgac"
+                color="#ffb86a"
+                title="SGAC - Commercial Space Project"
+                period="Jul 2020 - Aug 2021"
+                connectionId="2020-sgac"
+                isExpanded={expandedItems.has("vol-2020-sgac")}
+                onToggleExpand={() => toggleExpand("vol-2020-sgac")}
+                details={volunteerActivities.find((exp) => exp.id === "vol-2020-sgac")}
+              />
+
+              <MinorTimelineItem
+                id="vol-2020-spacegen"
+                color="#ffb86a"
+                title="SpaceGen United Delegate"
+                period="Jul 2020"
+                connectionId="2020-spacegen"
+                isExpanded={expandedItems.has("vol-2020-spacegen")}
+                onToggleExpand={() => toggleExpand("vol-2020-spacegen")}
+                details={volunteerActivities.find((exp) => exp.id === "vol-2020-spacegen")}
+                last={true}
+              />
+            </div>
+
+            {/* Side Projects Timeline */}
+            <div className="md:col-span-3 space-y-8 relative">
+              <div className="absolute top-0 bottom-0 left-3 w-px bg-[#00d5be]/30 z-0"></div>
+
+              <div className="h-[100px] md:h-[120px]"></div>
+
+              <MinorTimelineItem
+                id="side-2023"
+                color="#00d5be"
+                title="Space Data Visualization Tool"
+                period="Mar - Jun 2023"
+                connectionId="2023-leanspace"
+                isExpanded={expandedItems.has("side-2023")}
+                onToggleExpand={() => toggleExpand("side-2023")}
+                details={sideProjects.find((exp) => exp.id === "side-2023")}
+              />
+
+              <MinorTimelineItem
+                id="side-2021"
+                color="#00d5be"
+                title="API Documentation Platform"
+                period="May - Dec 2021"
+                connectionId="2021-bossbusworld"
+                isExpanded={expandedItems.has("side-2021")}
+                onToggleExpand={() => toggleExpand("side-2021")}
+                details={sideProjects.find((exp) => exp.id === "side-2021")}
+              />
+
+              <MinorTimelineItem
+                id="side-2019"
+                color="#00d5be"
+                title="EdTech Consulting"
+                period="Jun 2019 - Dec 2020"
+                connectionId="2019-pledre"
+                isExpanded={expandedItems.has("side-2019")}
+                onToggleExpand={() => toggleExpand("side-2019")}
+                details={sideProjects.find((exp) => exp.id === "side-2019")}
+              />
+
+              <MinorTimelineItem
+                id="side-2017"
+                color="#00d5be"
+                title="Interactive Portfolio Builder"
+                period="Aug 2017 - Mar 2018"
+                connectionId="2017-artquake"
+                isExpanded={expandedItems.has("side-2017")}
+                onToggleExpand={() => toggleExpand("side-2017")}
+                details={sideProjects.find((exp) => exp.id === "side-2017")}
+                last={true}
+              />
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Timeline Legend */}
-      <div className="flex flex-wrap justify-center gap-6 mb-10">
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-[#615fff]"></div>
-          <span>Main Professional Experience</span>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-[#ffb86a]"></div>
-          <span>Volunteer Space Activities</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded-full bg-[#00d5be]"></div>
-          <span>Side & Freelance Projects</span>
-        </div>
-      </div>
-
-      {/* Education and Skills */}
-      <div className="mb-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div>
-          <h2 className="text-2xl font-bold mb-6 flex items-center">
-            <GraduationCap className="mr-2 text-[#ffb86a]" /> Education
-          </h2>
-          <div className="space-y-4">
-            <EducationItem institution="Utiva" degree="Product School, Agile Product Management" />
-            <EducationItem
-              institution="Obafemi Awolowo University"
-              degree="Bachelor of Arts - BA, Fine Arts: Painting/Graphics"
-            />
-            <EducationItem institution="Ife Business School" degree="Business Development and Entrepreneurship" />
-          </div>
-        </div>
-
-        <div>
-          <h2 className="text-2xl font-bold mb-6 flex items-center">
-            <Award className="mr-2 text-[#ffb86a]" /> Certifications
-          </h2>
-          <div className="space-y-4">
-            <Card>
-              <CardContent className="p-4">
-                <p className="font-medium">Application Security Analyst Explorer Award</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-4">
-                <p className="font-medium">Ch.DMP, PDG.SMDM, ACISMDM</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="p-4">
-                <p className="font-medium">Toggl Hire Product Development Skill Test Certificate</p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
-        <div>
-          <h2 className="text-2xl font-bold mb-6 flex items-center">
-            <Award className="mr-2 text-[#ffb86a]" /> Core Skills
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            <Badge className="bg-[#314158] hover:bg-[#314158]/80">Product Delivery</Badge>
-            <Badge className="bg-[#314158] hover:bg-[#314158]/80">B2B</Badge>
-            <Badge className="bg-[#314158] hover:bg-[#314158]/80">Stakeholder Management</Badge>
-            <Badge className="bg-[#314158] hover:bg-[#314158]/80">Product Strategy</Badge>
-            <Badge className="bg-[#314158] hover:bg-[#314158]/80">Developer Experience</Badge>
-            <Badge className="bg-[#314158] hover:bg-[#314158]/80">Platform Strategy</Badge>
-          </div>
-        </div>
-      </div>
-
-      {/* Timeline Headers */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mb-6">
-        <div className="md:col-span-6">
-          <h2 className="text-2xl font-bold flex items-center text-[#615fff]">
-            <Briefcase className="mr-2" /> Professional Experience
-          </h2>
-        </div>
-        <div className="md:col-span-3">
-          <h2 className="text-xl font-bold flex items-center text-[#ffb86a]">
-            <Rocket className="mr-2" /> Space Activities
-          </h2>
-        </div>
-        <div className="md:col-span-3">
-          <h2 className="text-xl font-bold flex items-center text-[#00d5be]">
-            <Code className="mr-2" /> Side Projects
-          </h2>
-        </div>
-      </div>
-
-      {/* Parallel Timelines */}
-      <div className="relative">
-        {/* Time markers */}
-        <div className="hidden md:block absolute left-0 top-0 bottom-0 w-16 border-r border-dashed border-gray-200">
-          <div className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-white px-2 text-sm font-bold text-[#62748e]">
-            2024
-          </div>
-          <div className="absolute top-[20%] right-0 transform translate-x-1/2 -translate-y-1/2 bg-white px-2 text-sm font-bold text-[#62748e]">
-            2023
-          </div>
-          <div className="absolute top-[40%] right-0 transform translate-x-1/2 -translate-y-1/2 bg-white px-2 text-sm font-bold text-[#62748e]">
-            2022
-          </div>
-          <div className="absolute top-[60%] right-0 transform translate-x-1/2 -translate-y-1/2 bg-white px-2 text-sm font-bold text-[#62748e]">
-            2021
-          </div>
-          <div className="absolute top-[80%] right-0 transform translate-x-1/2 -translate-y-1/2 bg-white px-2 text-sm font-bold text-[#62748e]">
-            2020
-          </div>
-          <div className="absolute bottom-0 right-0 transform translate-x-1/2 translate-y-1/2 bg-white px-2 text-sm font-bold text-[#62748e]">
-            2017
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:pl-16">
-          {/* Main Professional Timeline */}
-          <div className="md:col-span-6 space-y-8 relative">
-            <div className="absolute top-0 bottom-0 left-3 w-px bg-[#615fff]/30 z-0"></div>
-
-            <MainTimelineItem
-              id="2024-sii"
-              color="#615fff"
-              title="Product"
-              company="Groupe SII"
-              companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2024-sii")?.companyLinkedIn}
-              period="July 2024 - Present"
-              location="France"
-              tags={["Airlines", "Travel", "AI Driven Dynamic Pricing", "Amadeus"]}
-              current={true}
-              connectionId="2024-sii"
-              isExpanded={expandedItems.has("2024-sii")}
-              onToggleExpand={() => toggleExpand("2024-sii")}
-              details={professionalExperiences.find((exp) => exp.id === "2024-sii")}
-            />
-
-            <MainTimelineItem
-              id="2023-leanspace"
-              color="#615fff"
-              title="Product Owner"
-              company="Leanspace"
-              companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2023-leanspace")?.companyLinkedIn}
-              period="November 2022 - August 2023"
-              location="Strasbourg, France"
-              tags={["Space", "Satellites", "SaaS"]}
-              connectionId="2023-leanspace"
-              isExpanded={expandedItems.has("2023-leanspace")}
-              onToggleExpand={() => toggleExpand("2023-leanspace")}
-              details={professionalExperiences.find((exp) => exp.id === "2023-leanspace")}
-            />
-
-            <MainTimelineItem
-              id="2021-bossbusworld"
-              color="#615fff"
-              title="Technical Product Manager (Developer Experience)"
-              company="Bossbusworld"
-              companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2021-bossbusworld")?.companyLinkedIn}
-              period="January 2021 - November 2022"
-              location="Lagos, Nigeria"
-              tags={["Travel", "SaaS", "Developer Ecosystem"]}
-              connectionId="2021-bossbusworld"
-              isExpanded={expandedItems.has("2021-bossbusworld")}
-              onToggleExpand={() => toggleExpand("2021-bossbusworld")}
-              details={professionalExperiences.find((exp) => exp.id === "2021-bossbusworld")}
-            />
-
-            <MainTimelineItem
-              id="2019-pledre"
-              color="#615fff"
-              title="Product Manager"
-              company="Pledre"
-              companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2019-pledre")?.companyLinkedIn}
-              period="January 2019 - January 2021"
-              location="Lagos, Nigeria"
-              tags={["Education", "Infrastructure", "B2B"]}
-              connectionId="2019-pledre"
-              isExpanded={expandedItems.has("2019-pledre")}
-              onToggleExpand={() => toggleExpand("2019-pledre")}
-              details={professionalExperiences.find((exp) => exp.id === "2019-pledre")}
-            />
-
-            <MainTimelineItem
-              id="2017-artquake"
-              color="#615fff"
-              title="Software Engineer"
-              company="ArtQuake"
-              companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2017-artquake")?.companyLinkedIn}
-              period="May 2017 - December 2018"
-              location="Lagos, Nigeria"
-              tags={["UI", "Interactivity", "Digital Experiences"]}
-              connectionId="2017-artquake"
-              isExpanded={expandedItems.has("2017-artquake")}
-              onToggleExpand={() => toggleExpand("2017-artquake")}
-              details={professionalExperiences.find((exp) => exp.id === "2017-artquake")}
-              last={true}
-            />
-          </div>
-
-          {/* Volunteer Space Activities Timeline */}
-          <div className="md:col-span-3 space-y-8 relative">
-            <div className="absolute top-0 bottom-0 left-3 w-px bg-[#ffb86a]/30 z-0"></div>
-
-            <div className="h-[100px] md:h-[120px]"></div>
-
-            <MinorTimelineItem
-              id="vol-2023-mva"
-              color="#ffb86a"
-              title="MVA - Lunar Technical Coordination"
-              period="Sep 2023 - Present"
-              connectionId="2023-leanspace"
-              isExpanded={expandedItems.has("vol-2023-mva")}
-              onToggleExpand={() => toggleExpand("vol-2023-mva")}
-              details={volunteerActivities.find((exp) => exp.id === "vol-2023-mva")}
-            />
-
-            <MinorTimelineItem
-              id="vol-2021-mva"
-              color="#ffb86a"
-              title="MVA - Interoperability Subgroup Co-Chair"
-              period="Jan 2021 - Sep 2023"
-              connectionId="2021-bossbusworld"
-              isExpanded={expandedItems.has("vol-2021-mva")}
-              onToggleExpand={() => toggleExpand("vol-2021-mva")}
-              details={volunteerActivities.find((exp) => exp.id === "vol-2021-mva")}
-            />
-
-            <MinorTimelineItem
-              id="vol-2020-spacehubs"
-              color="#ffb86a"
-              title="Spacehubs Africa Analyst"
-              period="Aug 2020 - Aug 2021"
-              connectionId="2020-spacehubs"
-              isExpanded={expandedItems.has("vol-2020-spacehubs")}
-              onToggleExpand={() => toggleExpand("vol-2020-spacehubs")}
-              details={volunteerActivities.find((exp) => exp.id === "vol-2020-spacehubs")}
-            />
-
-            <MinorTimelineItem
-              id="vol-2020-spaceapps"
-              color="#ffb86a"
-              title="NASA SpaceApps Lagos Lead"
-              period="Aug 2020 - Aug 2021"
-              connectionId="2020-spaceapps"
-              isExpanded={expandedItems.has("vol-2020-spaceapps")}
-              onToggleExpand={() => toggleExpand("vol-2020-spaceapps")}
-              details={volunteerActivities.find((exp) => exp.id === "vol-2020-spaceapps")}
-            />
-
-            <MinorTimelineItem
-              id="vol-2020-sgac"
-              color="#ffb86a"
-              title="SGAC - Commercial Space Project"
-              period="Jul 2020 - Aug 2021"
-              connectionId="2020-sgac"
-              isExpanded={expandedItems.has("vol-2020-sgac")}
-              onToggleExpand={() => toggleExpand("vol-2020-sgac")}
-              details={volunteerActivities.find((exp) => exp.id === "vol-2020-sgac")}
-            />
-
-            <MinorTimelineItem
-              id="vol-2020-spacegen"
-              color="#ffb86a"
-              title="SpaceGen United Delegate"
-              period="Jul 2020"
-              connectionId="2020-spacegen"
-              isExpanded={expandedItems.has("vol-2020-spacegen")}
-              onToggleExpand={() => toggleExpand("vol-2020-spacegen")}
-              details={volunteerActivities.find((exp) => exp.id === "vol-2020-spacegen")}
-              last={true}
-            />
-          </div>
-
-          {/* Side Projects Timeline */}
-          <div className="md:col-span-3 space-y-8 relative">
-            <div className="absolute top-0 bottom-0 left-3 w-px bg-[#00d5be]/30 z-0"></div>
-
-            <div className="h-[100px] md:h-[120px]"></div>
-
-            <MinorTimelineItem
-              id="side-2023"
-              color="#00d5be"
-              title="Space Data Visualization Tool"
-              period="Mar - Jun 2023"
-              connectionId="2023-leanspace"
-              isExpanded={expandedItems.has("side-2023")}
-              onToggleExpand={() => toggleExpand("side-2023")}
-              details={sideProjects.find((exp) => exp.id === "side-2023")}
-            />
-
-            <MinorTimelineItem
-              id="side-2021"
-              color="#00d5be"
-              title="API Documentation Platform"
-              period="May - Dec 2021"
-              connectionId="2021-bossbusworld"
-              isExpanded={expandedItems.has("side-2021")}
-              onToggleExpand={() => toggleExpand("side-2021")}
-              details={sideProjects.find((exp) => exp.id === "side-2021")}
-            />
-
-            <MinorTimelineItem
-              id="side-2019"
-              color="#00d5be"
-              title="EdTech Consulting"
-              period="Jun 2019 - Dec 2020"
-              connectionId="2019-pledre"
-              isExpanded={expandedItems.has("side-2019")}
-              onToggleExpand={() => toggleExpand("side-2019")}
-              details={sideProjects.find((exp) => exp.id === "side-2019")}
-            />
-
-            <MinorTimelineItem
-              id="side-2017"
-              color="#00d5be"
-              title="Interactive Portfolio Builder"
-              period="Aug 2017 - Mar 2018"
-              connectionId="2017-artquake"
-              isExpanded={expandedItems.has("side-2017")}
-              onToggleExpand={() => toggleExpand("side-2017")}
-              details={sideProjects.find((exp) => exp.id === "side-2017")}
-              last={true}
-            />
-          </div>
-        </div>
-      </div>
+      {/* Featured Blog Posts Section */}
+      <FeaturedBlogPosts />
     </div>
   )
 }

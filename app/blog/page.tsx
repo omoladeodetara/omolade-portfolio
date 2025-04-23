@@ -2,7 +2,40 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { fallbackBlogPosts } from "@/lib/fetch-blog-posts"
+
+// Import the fallback posts directly
+const fallbackBlogPosts = [
+  {
+    id: "googles-rumoured-hubspot-acquisition-strategic-analysis",
+    title: "Google's Rumoured HubSpot Acquisition: Strategic Analysis",
+    brief:
+      "An in-depth analysis of the strategic implications behind Google's potential acquisition of HubSpot and what it means for the marketing technology landscape.",
+    slug: "googles-rumoured-hubspot-acquisition-strategic-analysis",
+    coverImage: "/strategic-pathways.png",
+    dateAdded: "April 23, 2025",
+    tags: ["Business Strategy", "Tech Acquisitions", "Marketing Technology"],
+  },
+  {
+    id: "the-great-debate-revolution-vs-evolution-in-product-engineering-part-2",
+    title: "The Great Debate: Revolution vs. Evolution in Product Engineering - Part 2",
+    brief:
+      "Continuing our exploration of revolutionary versus evolutionary approaches to product development and engineering.",
+    slug: "the-great-debate-revolution-vs-evolution-in-product-engineering-part-2",
+    coverImage: "/collaborative-product-design.png",
+    dateAdded: "April 23, 2025",
+    tags: ["Product Development", "Engineering", "Innovation"],
+  },
+  {
+    id: "the-great-debate-revolution-vs-evolution-in-product-engineering-part-1",
+    title: "The Great Debate: Revolution vs. Evolution in Product Engineering - Part 1",
+    brief:
+      "Examining the tension between revolutionary and evolutionary approaches in modern product engineering and development.",
+    slug: "the-great-debate-revolution-vs-evolution-in-product-engineering-part-1",
+    coverImage: "/collaborative-innovation-cycle.png",
+    dateAdded: "April 23, 2025",
+    tags: ["Product Development", "Engineering", "Innovation"],
+  },
+]
 
 export const metadata: Metadata = {
   title: "Blog | Omolade Odetara",
@@ -10,27 +43,26 @@ export const metadata: Metadata = {
 }
 
 export default async function BlogPage() {
-  // Fetch blog posts server-side
+  // Start with fallback posts
   let posts = fallbackBlogPosts
 
   try {
-    // Use absolute URL with the environment variable
-    const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
-      ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
-      : "http://localhost:3000"
+    // Only attempt to fetch if we're in a browser or server environment
+    if (typeof window !== "undefined" || typeof process !== "undefined") {
+      // Use relative URL for simplicity and to avoid CORS issues
+      const response = await fetch("/api/blog-posts", {
+        cache: "no-store", // Don't cache this request
+      })
 
-    const response = await fetch(`${baseUrl}/api/blog-posts`, {
-      next: { revalidate: 3600 }, // Revalidate every hour
-    })
-
-    if (!response.ok) {
-      throw new Error(`API responded with status: ${response.status}`)
+      if (response.ok) {
+        posts = await response.json()
+      } else {
+        console.error(`API responded with status: ${response.status}`)
+      }
     }
-
-    posts = await response.json()
   } catch (error) {
     console.error("Error fetching blog posts:", error)
-    // Use fallback posts (already assigned)
+    // We'll use the fallback posts (already assigned)
   }
 
   return (

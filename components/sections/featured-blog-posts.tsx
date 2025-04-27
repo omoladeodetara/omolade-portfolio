@@ -60,18 +60,8 @@ export function FeaturedBlogPosts() {
     async function loadBlogPosts() {
       setIsLoading(true)
       try {
-        // Use a simple relative URL for the API request
-        const response = await fetch("/api/blog-posts").catch((error) => {
-          console.error("Error fetching blog posts:", error)
-          throw new Error("Failed to fetch blog posts")
-        })
-
-        if (!response.ok) {
-          throw new Error(`API responded with status: ${response.status}`)
-        }
-
-        const posts = await response.json()
-        setBlogPosts(posts)
+        // Use fallback posts directly instead of trying to fetch
+        setBlogPosts(fallbackBlogPosts)
       } catch (error) {
         console.error("Error loading blog posts:", error)
         // Use fallback posts when there's an error

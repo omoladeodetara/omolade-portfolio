@@ -43,29 +43,8 @@ export const metadata: Metadata = {
 }
 
 export default async function BlogPage() {
-  // Start with fallback posts
-  let posts = fallbackBlogPosts
-
-  try {
-    // Use a simple relative URL for the API request that works in all environments
-    const response = await fetch("/api/blog-posts", {
-      next: { revalidate: 3600 }, // Revalidate every hour
-      // Add a catch for network errors
-    }).catch((error) => {
-      console.error("Network error fetching blog posts:", error)
-      return new Response(JSON.stringify({ ok: false, status: 500 }))
-    })
-
-    if (response.ok) {
-      posts = await response.json()
-    } else {
-      console.error(`API responded with status: ${response.status}`)
-      // Keep using fallback posts
-    }
-  } catch (error) {
-    console.error("Error fetching blog posts:", error)
-    // We'll use the fallback posts (already assigned)
-  }
+  // Use fallback posts directly
+  const posts = fallbackBlogPosts
 
   return (
     <div className="container py-10">

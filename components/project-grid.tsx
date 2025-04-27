@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { AlertCircle } from "lucide-react"
 
 // Project data - in a real app, fetch from API/CMS
 const projects = [
@@ -43,6 +44,18 @@ const projects = [
   },
   {
     id: 4,
+    title: "Blockchain Africa Summit",
+    description:
+      "A planned hybrid blockchain conference and exhibition focused on blockchain, crypto, metaverse, and Web 3.0 technologies.",
+    image: "/blockchain-summit.png",
+    tags: ["Blockchain", "Web3", "Event Planning", "Project Management"],
+    category: "Professional Project",
+    period: "Planned for April 2022",
+    slug: "blockchain-africa-summit",
+    status: "postponed",
+  },
+  {
+    id: 5,
     title: "MoniZoom",
     description: "A borderless banking platform that accelerates global reach with reliable financial services.",
     image: "/financial-overview-dashboard.png",
@@ -53,7 +66,7 @@ const projects = [
     link: "https://monizoom.vercel.app/",
   },
   {
-    id: 5,
+    id: 6,
     title: "NestHub",
     description: "A platform for connecting property developers with potential homeowners and investors.",
     image: "/modern-real-estate-interface.png",
@@ -63,7 +76,7 @@ const projects = [
     slug: "nesthub",
   },
   {
-    id: 6,
+    id: 7,
     title: "Founders and Innovators",
     description: "A community platform for entrepreneurs and innovators to connect and collaborate on projects.",
     image: "/collaborative-growth.png",
@@ -74,7 +87,7 @@ const projects = [
     link: "https://www.crunchbase.com/organization/founders-and-innovators",
   },
   {
-    id: 7,
+    id: 8,
     title: "StellarXplora",
     description: "An interactive space exploration educational tool for students and space enthusiasts.",
     image: "/space-exploration-overview.png",
@@ -84,7 +97,7 @@ const projects = [
     slug: "stellarxplora",
   },
   {
-    id: 8,
+    id: 9,
     title: "Zyleme",
     description: "A learning management system focused on skill development for tech professionals.",
     image: "/digital-classroom-dashboard.png",
@@ -94,7 +107,7 @@ const projects = [
     slug: "zyleme",
   },
   {
-    id: 9,
+    id: 10,
     title: "TalaHive",
     description:
       "A specialized workspace and community hub for visual artists, providing studios for painting, graphics, animation, sculpture, ceramics, fashion, and textile arts.",
@@ -124,12 +137,18 @@ export function ProjectGrid({ filter = "all" }: ProjectGridProps) {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8">
       {filteredProjects.map((project) => (
         <Card key={project.id} className="overflow-hidden">
-          <div className="aspect-video w-full overflow-hidden">
+          <div className="aspect-video w-full overflow-hidden relative">
             <img
               src={project.image || "/placeholder.svg"}
               alt={project.title}
               className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
             />
+            {project.status === "postponed" && (
+              <div className="absolute top-2 right-2 bg-amber-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                <AlertCircle className="h-3 w-3 mr-1" />
+                Planned
+              </div>
+            )}
           </div>
           <CardContent className="p-4">
             <h3 className="text-xl font-bold">{project.title}</h3>

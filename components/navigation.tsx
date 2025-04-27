@@ -46,7 +46,7 @@ export function Navigation() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6">
           <Link href="/" className="font-bold text-xl">
-            Omolade Odetara
+            Omolade Jordan Odetara
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">

@@ -9,7 +9,7 @@ export function Footer() {
       <div className="container flex flex-col md:flex-row items-center justify-between gap-4 md:h-24">
         <div className="flex flex-col items-center md:items-start gap-4 md:gap-2">
           <Link href="/" className="font-bold">
-            Omolade Odetara
+            Omolade Jordan Odetara
           </Link>
           <p className="text-sm text-muted-foreground">&copy; {currentYear} All rights reserved.</p>
         </div>

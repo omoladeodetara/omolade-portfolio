@@ -117,6 +117,29 @@ const getProjectDetails = (slug?: string) => {
     }
   }
 
+  // Add details for the Blockchain Africa Summit
+  if (slug === "blockchain-africa-summit") {
+    return {
+      client: "FANDI Blockchain Factory",
+      role: "Project Manager",
+      timeline: "Planned for April 13-14, 2022 (Postponed)",
+      technologies: [
+        "Blockchain",
+        "Cryptocurrency",
+        "Web3",
+        "Metaverse",
+        "Event Planning",
+        "Project Management",
+        "Eventbrite Integration",
+        "Logistics Planning",
+        "Speaker Coordination",
+        "Sponsor Outreach",
+        "Budget Development",
+      ],
+      additionalLinks: [{ url: "https://bossbus-technologies.web.app/", label: "Bossbus Website (Planned Sponsor)" }],
+    }
+  }
+
   // Default details for other projects
   return {
     client: "Self-initiated",

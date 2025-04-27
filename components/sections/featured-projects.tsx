@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, AlertCircle } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -28,13 +28,13 @@ const sideProjects = [
   },
   {
     id: 3,
-    title: "TalaHive",
+    title: "Blockchain Africa Summit",
     description:
-      "A specialized workspace and community hub for visual artists, providing studios for painting, graphics, animation, sculpture, ceramics, fashion, and textile arts.",
-    image: "/african-talent-network.png",
-    tags: ["Visual Arts", "Studio Space", "Artist Community"],
-    slug: "talahive",
-    videoUrl: "https://youtu.be/92aq_qREv-A",
+      "A planned hybrid blockchain conference and exhibition focused on blockchain, crypto, metaverse, and Web 3.0 technologies.",
+    image: "/blockchain-summit.png",
+    tags: ["Blockchain", "Web3", "Event Planning"],
+    slug: "blockchain-africa-summit",
+    status: "postponed",
   },
 ]
 
@@ -60,12 +60,18 @@ export function FeaturedProjects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {sideProjects.map((project) => (
             <Card key={project.id} className="overflow-hidden group">
-              <div className="aspect-video w-full overflow-hidden">
+              <div className="aspect-video w-full overflow-hidden relative">
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
                   className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
+                {project.status === "postponed" && (
+                  <div className="absolute top-2 right-2 bg-amber-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                    <AlertCircle className="h-3 w-3 mr-1" />
+                    Planned
+                  </div>
+                )}
               </div>
               <CardContent className="p-4">
                 <h3 className="text-xl font-bold">{project.title}</h3>

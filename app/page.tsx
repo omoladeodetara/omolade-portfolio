@@ -57,7 +57,7 @@ export default function Home() {
     <div>
       <div className="container py-12 px-4 mx-auto max-w-7xl">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold tracking-tight mb-4">Omolade Odetara</h1>
+          <h1 className="text-4xl font-bold tracking-tight mb-4">Omolade Jordan Odetara</h1>
           <p className="text-xl text-[#62748e] max-w-2xl mx-auto">
             Product Professional | Deep Tech | Interoperability
           </p>
@@ -690,6 +690,10 @@ const volunteerActivities: ExperienceDetail[] = [
   {
     id: "vol-2020-spacegen",
     type: "Volunteer Space Activity",
+    title: "SpaceGen United Delegate",
+    company: "Space Generation Advisory Council",
+    companyLinkedIn: "https://www.linkedin.com/company/space-generation-advisory-council/",
+    period: "July 2020",
     title: "SpaceGen United Delegate",
     company: "Space Generation Advisory Council",
     companyLinkedIn: "https://www.linkedin.com/company/space-generation-advisory-council/",

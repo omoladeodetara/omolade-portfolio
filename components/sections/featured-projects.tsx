@@ -9,36 +9,45 @@ import { Badge } from "@/components/ui/badge"
 const sideProjects = [
   {
     id: 1,
+    title: "StellarXplora",
+    description: "Building, funding, and scaling the best space startups with a focus on the African market",
+    image: "/stellarxplora-thumbnail.png",
+    tags: ["Venture Studio", "Space Technology", "African Market"],
+    slug: "stellarxplora",
+    status: "active",
+  },
+  {
+    id: 2,
     title: "ASH B",
     description:
       "A comprehensive healthcare platform connecting patients with doctors through integrated telemedicine, appointment scheduling, and secure medical record management.",
     image: "/ash-b-main-thumbnail.png",
     tags: ["Healthcare", "Telemedicine", "Mobile Apps"],
     slug: "ash-b",
-    // Removed link property
-  },
-  {
-    id: 2,
-    title: "Moneybase",
-    description:
-      "A product management case study on implementing fractional share trading for a modern fintech platform.",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/moneybase-IwSJUYE6IIeTZwUc9ISx9LJbJQaUS1.png",
-    tags: ["PM Case Study", "Fintech", "Trading"],
-    slug: "moneybase",
   },
   {
     id: 3,
-    title: "Blockchain Africa Summit",
+    title: "Harvest Credit",
     description:
-      "A planned hybrid blockchain conference and exhibition focused on blockchain, crypto, metaverse, and Web 3.0 technologies.",
-    image: "/blockchain-summit.png",
-    tags: ["Blockchain", "Web3", "Event Planning"],
-    slug: "blockchain-africa-summit",
-    status: "postponed",
+      "An API platform connecting credit facilities to merchants, allowing users to pay with loans directly at checkout.",
+    image: "/financial-overview-dashboard.png",
+    tags: ["Fintech", "API", "Credit Systems"],
+    slug: "harvest-credit",
+    status: "prototype",
   },
 ]
 
 export function FeaturedProjects() {
+  const updatedSideProjects = sideProjects.map((project) => {
+    if (project.title === "TalaHive" && project.tags.includes("Y Combinator")) {
+      return {
+        ...project,
+        tags: project.tags.map((tag) => (tag === "Y Combinator" ? "Workspace" : tag)),
+      }
+    }
+    return project
+  })
+
   return (
     <section className="py-12 md:py-16 bg-muted/30">
       <div className="container">
@@ -70,6 +79,24 @@ export function FeaturedProjects() {
                   <div className="absolute top-2 right-2 bg-amber-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
                     <AlertCircle className="h-3 w-3 mr-1" />
                     Planned
+                  </div>
+                )}
+                {project.status === "early-stage" && (
+                  <div className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                    <AlertCircle className="h-3 w-3 mr-1" />
+                    Early Stage
+                  </div>
+                )}
+                {project.status === "prototype" && (
+                  <div className="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                    <AlertCircle className="h-3 w-3 mr-1" />
+                    Prototype
+                  </div>
+                )}
+                {project.status === "active" && (
+                  <div className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                    <AlertCircle className="h-3 w-3 mr-1" />
+                    Active
                   </div>
                 )}
               </div>

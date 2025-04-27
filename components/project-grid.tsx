@@ -2,7 +2,7 @@ import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { AlertCircle } from "lucide-react"
+import { AlertCircle, Clock } from "lucide-react"
 
 // Project data - in a real app, fetch from API/CMS
 const projects = [
@@ -44,6 +44,19 @@ const projects = [
   },
   {
     id: 4,
+    title: "StellarXplora",
+    description:
+      "A venture studio focused on building, funding, and scaling the best space startups with a focus on the African market.",
+    image: "/stellarxplora-thumbnail.png",
+    tags: ["Space Technology", "Venture Studio", "Earth Observation", "African Market"],
+    category: "Professional Project",
+    period: "2022 - Present",
+    slug: "stellarxplora",
+    link: "https://stellarxplora.decilehub.com/",
+    status: "active",
+  },
+  {
+    id: 5,
     title: "Blockchain Africa Summit",
     description:
       "A planned hybrid blockchain conference and exhibition focused on blockchain, crypto, metaverse, and Web 3.0 technologies.",
@@ -55,7 +68,43 @@ const projects = [
     status: "postponed",
   },
   {
-    id: 5,
+    id: 6,
+    title: "The Space Convention",
+    description:
+      "A global space industry event bringing together delegates from all sectors that intersect with the space industry.",
+    image: "/space-exploration-overview.png",
+    tags: ["Space Industry", "Event Planning", "International Collaboration"],
+    category: "Professional Project",
+    period: "Planned (Postponed)",
+    slug: "space-convention",
+    status: "postponed",
+  },
+  {
+    id: 7,
+    title: "AfricaNFTArt",
+    description:
+      "A marketplace for African artists to showcase, sell their work as NFTs, and earn royalties on every resale.",
+    image: "/vibrant-african-nft-gallery.png",
+    tags: ["Blockchain", "NFT", "Digital Art", "Marketplace", "Product Strategy"],
+    category: "Professional Project",
+    period: "July 2021 - December 2021",
+    slug: "africanftart",
+    status: "early-stage",
+  },
+  {
+    id: 8,
+    title: "Harvest Credit",
+    description:
+      "An API platform connecting credit facilities to merchants, allowing users to pay with loans directly at checkout.",
+    image: "/financial-overview-dashboard.png",
+    tags: ["Fintech", "API Development", "Credit Systems", "E-commerce"],
+    category: "Professional Project",
+    period: "2020",
+    slug: "harvest-credit",
+    status: "prototype",
+  },
+  {
+    id: 9,
     title: "MoniZoom",
     description: "A borderless banking platform that accelerates global reach with reliable financial services.",
     image: "/financial-overview-dashboard.png",
@@ -66,7 +115,7 @@ const projects = [
     link: "https://monizoom.vercel.app/",
   },
   {
-    id: 6,
+    id: 10,
     title: "NestHub",
     description: "A platform for connecting property developers with potential homeowners and investors.",
     image: "/modern-real-estate-interface.png",
@@ -76,7 +125,7 @@ const projects = [
     slug: "nesthub",
   },
   {
-    id: 7,
+    id: 11,
     title: "Founders and Innovators",
     description: "A community platform for entrepreneurs and innovators to connect and collaborate on projects.",
     image: "/collaborative-growth.png",
@@ -87,17 +136,17 @@ const projects = [
     link: "https://www.crunchbase.com/organization/founders-and-innovators",
   },
   {
-    id: 8,
-    title: "StellarXplora",
+    id: 12,
+    title: "SpaceEd Explorer",
     description: "An interactive space exploration educational tool for students and space enthusiasts.",
     image: "/space-exploration-overview.png",
     tags: ["React", "Three.js", "WebGL", "Astronomy APIs"],
     category: "Side Project",
     period: "Aug 2017 - Mar 2018",
-    slug: "stellarxplora",
+    slug: "space-ed-explorer",
   },
   {
-    id: 9,
+    id: 13,
     title: "Zyleme",
     description: "A learning management system focused on skill development for tech professionals.",
     image: "/digital-classroom-dashboard.png",
@@ -107,12 +156,12 @@ const projects = [
     slug: "zyleme",
   },
   {
-    id: 10,
+    id: 14,
     title: "TalaHive",
     description:
       "A specialized workspace and community hub for visual artists, providing studios for painting, graphics, animation, sculpture, ceramics, fashion, and textile arts.",
     image: "/african-talent-network.png",
-    tags: ["Visual Arts", "Studio Space", "Artist Community", "Y Combinator"],
+    tags: ["Visual Arts", "Studio Space", "Artist Community", "Workspace"],
     category: "Side Project",
     period: "Sep 2018 - Feb 2019",
     slug: "talahive",
@@ -147,6 +196,18 @@ export function ProjectGrid({ filter = "all" }: ProjectGridProps) {
               <div className="absolute top-2 right-2 bg-amber-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
                 <AlertCircle className="h-3 w-3 mr-1" />
                 Planned
+              </div>
+            )}
+            {project.status === "planning" && (
+              <div className="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                <Clock className="h-3 w-3 mr-1" />
+                In Planning
+              </div>
+            )}
+            {project.status === "active" && (
+              <div className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
+                <AlertCircle className="h-3 w-3 mr-1" />
+                Active
               </div>
             )}
           </div>

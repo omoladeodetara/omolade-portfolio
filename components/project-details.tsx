@@ -87,7 +87,7 @@ const getProjectDetails = (slug?: string) => {
         "Digital Access Systems",
       ],
       website: "https://youtu.be/92aq_qREv-A",
-      websiteLabel: "Watch YC Application Video",
+      websiteLabel: "Watch Application Video",
     }
   }
 
@@ -140,6 +140,74 @@ const getProjectDetails = (slug?: string) => {
     }
   }
 
+  // Add details for Harvest Credit
+  if (slug === "harvest-credit") {
+    return {
+      client: "Application for Funding",
+      role: "Product Strategy & Fintech Consultant",
+      timeline: "2020",
+      technologies: [
+        "API Development",
+        "Fintech",
+        "Payment Processing",
+        "Credit Systems",
+        "E-commerce Integration",
+        "Financial APIs",
+        "User Authentication",
+        "Data Analytics",
+      ],
+      status: "Prototype",
+    }
+  }
+
+  // Add details for The Space Convention
+  if (slug === "space-convention") {
+    return {
+      client: "Stellar Xplora",
+      role: "Event Strategist & Content Developer",
+      timeline: "Planned (Postponed Indefinitely)",
+      technologies: [
+        "Space Industry",
+        "Event Planning",
+        "Content Strategy",
+        "Community Building",
+        "International Collaboration",
+        "Public Outreach",
+        "Educational Programming",
+        "Exhibition Design",
+        "Speaker Coordination",
+        "Marketing Strategy",
+      ],
+      additionalLinks: [
+        { url: "https://www.iafastro.org/", label: "International Astronautical Federation" },
+        { url: "https://www.spacefoundation.org/", label: "Space Foundation" },
+      ],
+    }
+  }
+
+  // Add details for StellarXplora
+  if (slug === "stellarxplora") {
+    return {
+      client: "Self-initiated",
+      role: "Founding Team Member & Strategy Lead",
+      timeline: "2022 - Present",
+      technologies: [
+        "Space Technology",
+        "Venture Studio",
+        "Earth Observation",
+        "Satellite Data",
+        "AI/ML",
+        "Cloud Computing",
+        "Business Development",
+        "Product Strategy",
+        "Market Analysis",
+      ],
+      website: "https://stellarxplora.decilehub.com/",
+      websiteLabel: "Visit Website",
+      status: "Active",
+    }
+  }
+
   // Default details for other projects
   return {
     client: "Self-initiated",
@@ -183,6 +251,24 @@ export function ProjectDetails({ slug }: ProjectDetailsProps) {
           ))}
         </div>
       </div>
+
+      {details.status && (
+        <div>
+          <h4 className="text-sm font-medium text-muted-foreground mb-2">Status</h4>
+          <Badge
+            variant="outline"
+            className={
+              details.status === "Active"
+                ? "bg-green-500/10 text-green-500 border-green-500/20"
+                : details.status === "Prototype"
+                  ? "bg-blue-500/10 text-blue-500 border-blue-500/20"
+                  : "bg-amber-500/10 text-amber-500 border-amber-500/20"
+            }
+          >
+            {details.status}
+          </Badge>
+        </div>
+      )}
 
       {details.website && (
         <div>

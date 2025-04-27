@@ -1,126 +1,59 @@
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Facebook, Twitter, Linkedin, Mail, Globe } from "lucide-react"
+import { Github, Linkedin } from "lucide-react"
 
 export function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
-    <footer className="border-t bg-muted/40 print:hidden">
-      <div className="container px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div className="md:col-span-2">
-            <Link href="/" className="font-bold text-xl inline-block mb-4">
-              LOGIC<span className="text-primary">/</span>LSIC<span className="text-primary">/</span>GEGSLA
-            </Link>
-            <p className="text-muted-foreground mb-4 max-w-md">
-              A collaborative workshop focused on lunar activities database, interoperability, cooperation, and
-              standards.
-            </p>
-            <div className="flex space-x-4">
-              <Button variant="ghost" size="icon" asChild>
-                <Link href="#" aria-label="Facebook">
-                  <Facebook className="h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link href="#" aria-label="Twitter">
-                  <Twitter className="h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link href="#" aria-label="LinkedIn">
-                  <Linkedin className="h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link href="mailto:info@lunarworkshop.org" aria-label="Email">
-                  <Mail className="h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <Link
-                  href="https://moonvillageassociation.org/gegsla/gegsla-team/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GEGSLA Team"
-                >
-                  <Globe className="h-5 w-5" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="font-medium text-base mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/agenda" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Agenda
-                </Link>
-              </li>
-              <li>
-                <Link href="/speakers" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Speakers
-                </Link>
-              </li>
-              <li>
-                <Link href="/registration" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Registration
-                </Link>
-              </li>
-              <li>
-                <Link href="/engagement" className="text-muted-foreground hover:text-foreground transition-colors">
-                  Engagement
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-medium text-base mb-4">Stay Updated</h3>
-            <p className="text-muted-foreground mb-4">Subscribe to our newsletter for updates about the workshop.</p>
-            <div className="flex gap-2">
-              <Input type="email" placeholder="Your email" className="max-w-[220px]" />
-              <Button>Subscribe</Button>
-            </div>
-          </div>
+    <footer className="w-full border-t py-6 md:py-0">
+      <div className="container flex flex-col md:flex-row items-center justify-between gap-4 md:h-24">
+        <div className="flex flex-col items-center md:items-start gap-4 md:gap-2">
+          <Link href="/" className="font-bold">
+            Omolade Odetara
+          </Link>
+          <p className="text-sm text-muted-foreground">&copy; {currentYear} All rights reserved.</p>
         </div>
 
-        <div className="pt-8 border-t border-border/40 text-center">
-          <p className="text-muted-foreground text-sm mb-2">
-            © {new Date().getFullYear()} LOGIC/LSIC/GEGSLA Virtual Workshop. All rights reserved.
-          </p>
-          <div className="flex justify-center gap-4 text-sm text-muted-foreground">
-            <Link
-              href="https://logic.jhuapl.edu/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-primary hover:underline"
-            >
-              LOGIC
+        <div className="flex flex-col items-center md:items-end gap-4">
+          <div className="flex items-center gap-4">
+            <Link href="https://github.com/ArtQuake" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <Github className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
             </Link>
-            <span>|</span>
             <Link
-              href="https://lsic.jhuapl.edu/"
+              href="https://www.linkedin.com/in/omoladeodetara"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary hover:underline"
+              aria-label="LinkedIn"
             >
-              LSIC
+              <Linkedin className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
             </Link>
-            <span>|</span>
             <Link
-              href="https://moonvillageassociation.org/gegsla/about/"
+              href="https://omoladeodetara.hashnode.dev"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-primary hover:underline"
+              aria-label="Hashnode Blog"
             >
-              GEGSLA
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 337 337"
+                fill="none"
+                className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors"
+              >
+                <path
+                  fillRule="evenodd"
+                  clipRule="evenodd"
+                  d="M23.155 112.598c-30.873 30.874-30.873 80.93 0 111.804l89.443 89.443c30.874 30.873 80.93 30.873 111.804 0l89.443-89.443c30.873-30.874 30.873-80.93 0-111.804l-89.443-89.443c-30.874-30.873-80.93-30.873-111.804 0l-89.443 89.443zm184.476 95.033c21.612-21.611 21.612-56.651 0-78.262-21.611-21.612-56.651-21.612-78.262 0-21.612 21.611-21.612 56.651 0 78.262 21.611 21.612 56.651 21.612 78.262 0z"
+                  fill="currentColor"
+                />
+              </svg>
+            </Link>
+          </div>
+          <div className="flex gap-4 text-sm text-muted-foreground">
+            <Link href="/privacy-policy" className="hover:text-foreground transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms-of-service" className="hover:text-foreground transition-colors">
+              Terms of Service
             </Link>
           </div>
         </div>

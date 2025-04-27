@@ -1,282 +1,178 @@
-import Image from "next/image"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, Globe } from "lucide-react"
-import { LogoCarousel } from "@/components/logo-carousel"
+import PageHeader from "@/components/page-header"
+import AboutHero from "@/components/sections/about-hero"
+import Skills from "@/components/sections/skills"
+import TimelineSection, { type TimelineItem } from "@/components/sections/timeline"
+import Values from "@/components/sections/values"
 
 export default function AboutPage() {
+  // Work experiences data
+  const workExperiences: TimelineItem[] = [
+    {
+      id: "work-1",
+      type: "work",
+      title: "Senior Software Engineer",
+      organization: "Tech Innovations Inc.",
+      location: "San Francisco, CA",
+      startDate: "Jan 2021",
+      endDate: "Present",
+      description:
+        "Leading the development of cloud-based solutions for enterprise clients. Architected and implemented scalable microservices using Node.js and TypeScript. Mentored junior developers and established best practices for the engineering team.",
+      responsibilities: [
+        "Lead a team of 5 developers working on cloud infrastructure",
+        "Design and implement RESTful APIs and microservices",
+        "Collaborate with product managers to define feature specifications",
+        "Conduct code reviews and provide technical guidance",
+      ],
+      achievements: [
+        "Reduced API response time by 40% through optimization",
+        "Implemented CI/CD pipeline that decreased deployment time by 60%",
+        "Led migration from monolith to microservices architecture",
+      ],
+      technologies: ["TypeScript", "Node.js", "React", "AWS", "Docker", "Kubernetes"],
+      links: [{ label: "Company Website", url: "https://example.com/tech-innovations" }],
+      linkedinUrl: "https://www.linkedin.com/company/tech-innovations-inc",
+    },
+    {
+      id: "work-2",
+      type: "work",
+      title: "Software Engineer",
+      organization: "DataViz Solutions",
+      location: "Boston, MA",
+      startDate: "Mar 2018",
+      endDate: "Dec 2020",
+      description:
+        "Developed data visualization tools and dashboards for financial services clients. Built front-end applications using React and D3.js. Collaborated with data scientists to implement complex analytical features.",
+      responsibilities: [
+        "Developed interactive data visualization components",
+        "Optimized front-end performance for large datasets",
+        "Integrated with various financial data APIs",
+        "Participated in agile development process",
+      ],
+      achievements: [
+        "Created a reusable chart library that reduced development time by 30%",
+        "Implemented real-time data streaming that became a key selling point",
+        'Received "Engineer of the Quarter" award twice',
+      ],
+      technologies: ["JavaScript", "React", "D3.js", "GraphQL", "Python"],
+      links: [{ label: "Project Demo", url: "https://example.com/dataviz-demo" }],
+      linkedinUrl: "https://www.linkedin.com/company/dataviz-solutions",
+    },
+    {
+      id: "work-3",
+      type: "work",
+      title: "Junior Developer",
+      organization: "WebSoft Systems",
+      location: "Chicago, IL",
+      startDate: "Jun 2016",
+      endDate: "Feb 2018",
+      description:
+        "Started as an intern and was quickly promoted to a full-time position. Worked on web applications for small to medium businesses. Gained experience in full-stack development using PHP, MySQL, and JavaScript.",
+      responsibilities: [
+        "Developed and maintained client websites",
+        "Implemented responsive designs from mockups",
+        "Fixed bugs and added features to existing applications",
+        "Assisted with database design and optimization",
+      ],
+      achievements: [
+        "Promoted from intern to junior developer in 3 months",
+        "Built an internal tool that automated reporting tasks",
+        "Reduced page load time by 25% through optimization techniques",
+      ],
+      technologies: ["PHP", "MySQL", "JavaScript", "HTML/CSS", "jQuery"],
+      links: [{ label: "Portfolio", url: "https://example.com/early-work" }],
+      linkedinUrl: "https://www.linkedin.com/company/websoft-systems",
+    },
+  ]
+
+  // Side projects data
+  const sideProjects: TimelineItem[] = [
+    {
+      id: "project-1",
+      type: "project",
+      title: "Open Source Contributor",
+      organization: "React Ecosystem",
+      startDate: "Jan 2021",
+      endDate: "Present",
+      description:
+        "Active contributor to several open-source projects in the React ecosystem. Focused on improving documentation, fixing bugs, and adding new features.",
+      technologies: ["React", "TypeScript", "Jest"],
+      links: [{ label: "GitHub Profile", url: "https://github.com/yourusername" }],
+      linkedinUrl: "https://www.linkedin.com/company/react",
+    },
+    {
+      id: "project-2",
+      type: "project",
+      title: "Mobile App Developer",
+      organization: "Fitness Tracker App",
+      startDate: "Jun 2019",
+      endDate: "Dec 2020",
+      description:
+        "Developed a fitness tracking mobile application that allows users to record workouts, track progress, and set goals.",
+      technologies: ["React Native", "Firebase", "Redux"],
+      links: [{ label: "App Store", url: "https://example.com/fitness-app" }],
+    },
+    {
+      id: "project-3",
+      type: "project",
+      title: "Technical Blogger",
+      organization: "Dev.to & Medium",
+      startDate: "Mar 2018",
+      endDate: "Present",
+      description:
+        "Write technical articles and tutorials on web development, focusing on JavaScript frameworks and best practices.",
+      links: [{ label: "Blog", url: "https://dev.to/yourusername" }],
+    },
+  ]
+
+  // Volunteer work data
+  const volunteerWork: TimelineItem[] = [
+    {
+      id: "volunteer-1",
+      type: "volunteer",
+      title: "Mentor",
+      organization: "Code for Good",
+      startDate: "Jan 2021",
+      endDate: "Present",
+      description:
+        "Mentor aspiring developers from underrepresented groups in tech. Provide guidance on projects, career advice, and technical support.",
+      links: [{ label: "Organization", url: "https://example.com/code-for-good" }],
+      linkedinUrl: "https://www.linkedin.com/company/code-for-good",
+    },
+    {
+      id: "volunteer-2",
+      type: "volunteer",
+      title: "Workshop Instructor",
+      organization: "Local Tech Meetup",
+      startDate: "Sep 2019",
+      endDate: "Dec 2020",
+      description:
+        "Conducted monthly workshops on web development topics for beginners. Created hands-on exercises and learning materials.",
+      links: [{ label: "Meetup Group", url: "https://meetup.com/local-tech" }],
+      linkedinUrl: "https://www.linkedin.com/company/local-tech-meetup",
+    },
+    {
+      id: "volunteer-3",
+      type: "volunteer",
+      title: "Tech Lead",
+      organization: "Nonprofit Website Project",
+      startDate: "May 2017",
+      endDate: "Apr 2018",
+      description:
+        "Led a team of volunteers to redesign and develop a website for a local nonprofit organization. Managed project timeline and delegated tasks.",
+      technologies: ["WordPress", "PHP", "JavaScript"],
+      links: [{ label: "Project", url: "https://example.com/nonprofit" }],
+      linkedinUrl: "https://www.linkedin.com/company/nonprofit-website-project",
+    },
+  ]
+
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="max-w-3xl mx-auto text-center mb-12">
-        <h1 className="text-4xl font-bold tracking-tighter mb-4">About the Workshop</h1>
-        <p className="text-muted-foreground text-lg">
-          Learn more about the LOGIC/LSIC/GEGSLA Virtual Workshop and our mission to advance lunar exploration through
-          collaboration.
-        </p>
-      </div>
+    <div>
+      <PageHeader title="About Me" description="Learn about my background, skills, and professional journey" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-        <div className="order-2 lg:order-1">
-          <h2 className="text-3xl font-bold tracking-tighter mb-6">Our Mission</h2>
-          <div className="space-y-4 text-muted-foreground">
-            <p>
-              The LOGIC/LSIC/GEGSLA Virtual Workshop brings together researchers, industry professionals, and space
-              agencies to address key challenges in lunar exploration and collaboration.
-            </p>
-            <p>
-              Our mission is to foster international cooperation, develop standardized lunar activities databases,
-              improve interoperability between systems and missions, and establish common standards for lunar
-              operations.
-            </p>
-            <p>
-              Through this collaborative approach, we aim to accelerate progress in lunar exploration and create a
-              sustainable framework for future missions and activities on the Moon.
-            </p>
-          </div>
-        </div>
-        <div className="relative h-[400px] rounded-lg overflow-hidden order-1 lg:order-2">
-          <Image src="/images/lunar-mission.jpg" alt="Lunar Mission" fill className="object-cover" />
-        </div>
-      </div>
-
-      {/* Partner Organizations */}
-      <div className="mb-16">
-        <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">Partners</h2>
-        <LogoCarousel />
-      </div>
-
-      <div className="mb-16">
-        <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">Organizers</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="rounded-full bg-primary/20 p-2">
-                  <Globe className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="font-bold text-lg">LOGIC</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                The Lunar Operating Guidelines for Infrastructure Consortium (LOGIC) brings together the international
-                and commercial lunar community around adopting, adapting, and potentially authoring interoperability
-                standards, ensuring that lunar infrastructure systems can function within a cohesive ecosystem.
-              </p>
-              <p className="text-muted-foreground mb-4">
-                Sponsored by the Defense Advanced Research Projects Agency (DARPA) and managed by Johns Hopkins Applied
-                Physics Laboratory (APL), LOGIC's mission is to become the trusted, independent focal point for
-                architecting interoperability and facilitating information sharing in support of a commercial,
-                international lunar economy.
-              </p>
-              <Button variant="outline" size="sm" asChild className="mt-2">
-                <Link href="https://logic.jhuapl.edu/" target="_blank" rel="noopener noreferrer">
-                  <Globe className="mr-2 h-4 w-4" />
-                  Visit LOGIC Website
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="rounded-full bg-primary/20 p-2">
-                  <Globe className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="font-bold text-lg">LSIC</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                The Lunar Surface Innovation Consortium (LSIC) is a collaborative community of lunar experts from
-                academia, industry, non-profits, and government dedicated to advancing technologies needed for
-                successful lunar surface exploration.
-              </p>
-              <p className="text-muted-foreground mb-4">
-                Managed by the Johns Hopkins Applied Physics Laboratory (APL), LSIC focuses on key technology areas
-                including dust mitigation, excavation and construction, extreme environments, and communications and
-                navigation systems to enable a sustainable human and robotic presence on the lunar surface.
-              </p>
-              <Button variant="outline" size="sm" asChild className="mt-2">
-                <Link href="https://lsic.jhuapl.edu/" target="_blank" rel="noopener noreferrer">
-                  <Globe className="mr-2 h-4 w-4" />
-                  Visit LSIC Website
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="rounded-full bg-primary/20 p-2">
-                  <Globe className="h-5 w-5 text-primary" />
-                </div>
-                <h3 className="font-bold text-lg">GEGSLA</h3>
-              </div>
-              <p className="text-muted-foreground mb-4">
-                The Global Expert Group on Sustainable Lunar Activities (GEGSLA) is an international, interdisciplinary,
-                and independent platform working to develop recommendations for lunar activities coordination and
-                information-sharing.
-              </p>
-              <p className="text-muted-foreground mb-4">
-                Initiated by the Moon Village Association (MVA) in 2020, GEGSLA brings together experts from diverse
-                backgrounds including Space Agencies, Government, Industry, International Organizations, NGOs, and
-                Universities to address challenges related to sustainable lunar exploration and utilization, with a
-                focus on international cooperation and governance frameworks.
-              </p>
-              <Button variant="outline" size="sm" asChild className="mt-2">
-                <Link href="https://moonvillageassociation.org/gegsla/about/" target="_blank" rel="noopener noreferrer">
-                  <Globe className="mr-2 h-4 w-4" />
-                  Visit GEGSLA Website
-                </Link>
-              </Button>
-            </CardContent>
-          </Card>
-        </div>
-      </div>
-
-      <div className="mb-16">
-        <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">Workshop Focus Areas</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            {
-              title: "Lunar Activities Database",
-              description:
-                "Developing standardized databases to track and coordinate lunar activities across multiple missions and organizations.",
-            },
-            {
-              title: "Interoperability",
-              description:
-                "Ensuring systems and equipment from different missions can work together seamlessly on the lunar surface.",
-            },
-            {
-              title: "International Cooperation",
-              description:
-                "Fostering collaboration between space agencies, private companies, and research institutions worldwide.",
-            },
-            {
-              title: "Standards Development",
-              description:
-                "Creating common standards and protocols for lunar operations, data exchange, and resource utilization.",
-            },
-          ].map((area, index) => (
-            <Card key={index}>
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="rounded-full bg-primary/20 p-2">
-                    <CheckCircle className="h-5 w-5 text-primary" />
-                  </div>
-                  <h3 className="font-bold text-lg">{area.title}</h3>
-                </div>
-                <p className="text-muted-foreground">{area.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-
-      <div className="mb-16">
-        <h2 className="text-3xl font-bold tracking-tighter mb-8 text-center">Committee</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            {
-              id: 1,
-              name: "Timothy Cichan",
-              organization: "Lockheed Martin",
-              image: "/images/organizer-timothy.jpg",
-            },
-            {
-              id: 2,
-              name: "Wesley Fuhrman",
-              organization: "Johns Hopkins Applied Physics Laboratory",
-              image: "/images/organizer-wesley.jpg",
-            },
-            {
-              id: 3,
-              name: "Anna Shin",
-              organization: "Johns Hopkins Applied Physics Laboratory",
-              image: "/images/organizer-anna.jpg",
-            },
-            {
-              id: 4,
-              name: "Marchel Holle",
-              organization: "ispace",
-              image: "/images/speaker-hiroshi.jpg",
-            },
-            {
-              id: 5,
-              name: "Shreya Santra",
-              organization: "Tohoku University",
-              image: "/images/speaker-krystal.jpg",
-            },
-            {
-              id: 6,
-              name: "Bernd Hoefer",
-              organization: "A9C Capital",
-              image: "/images/organizer-bernd.jpg",
-            },
-            {
-              id: 7,
-              name: "Ekaterina Seltikova",
-              organization: "Advanced Space Concepts and Technologies",
-              image: "/images/organizer-ekaterina.jpg",
-            },
-            {
-              id: 8,
-              name: "Omolade Odetara",
-              organization: "GEGSLA",
-              image: "/images/organizer-omolade.jpg",
-            },
-            {
-              id: 9,
-              name: "Hasan Galal",
-              organization: "Egyptian Space Agency",
-              image: "/images/organizer-hasan.jpg",
-            },
-            {
-              id: 10,
-              name: "Daniel Meidenbauer",
-              organization: "Johns Hopkins Applied Physics Laboratory",
-              image: "/images/organizer-daniel.jpg",
-            },
-            {
-              id: 11,
-              name: "Jamie Porter",
-              organization: "Johns Hopkins Applied Physics Laboratory",
-              image: "/images/organizer-jamie.jpg",
-            },
-            {
-              id: 12,
-              name: "Kristin Jaburek",
-              organization: "Johns Hopkins Applied Physics Laboratory",
-              image: "/images/organizer-kristin.jpg",
-            },
-          ].map((organizer) => (
-            <Card key={organizer.id} className="overflow-hidden">
-              <div className="relative h-64">
-                <Image src={organizer.image || "/placeholder.svg"} alt={organizer.name} fill className="object-cover" />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-1">{organizer.name}</h3>
-                <p className="text-muted-foreground mb-1">{organizer.organization}</p>
-                <Button variant="outline" size="sm" asChild>
-                  <Link href={`/committee/${organizer.id}`}>View Profile</Link>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-
-      <div className="bg-muted rounded-lg p-8 text-center">
-        <h2 className="text-2xl font-bold mb-4">Join Us for This Important Event</h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto mb-6">
-          Registration is free and open to professionals in space exploration, database management, standards
-          development, and related fields.
-        </p>
-        <Button size="lg" asChild>
-          <Link href="/registration">Register Now</Link>
-        </Button>
-      </div>
+      <AboutHero />
+      <Skills />
+      <TimelineSection workExperiences={workExperiences} sideProjects={sideProjects} volunteerWork={volunteerWork} />
+      <Values />
     </div>
   )
 }

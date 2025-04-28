@@ -69,7 +69,7 @@ export function ContactInfo() {
             </svg>
           </a>
           <a
-            href="https://github.com/ArtQuake"
+            href="https://github.com/omoladeodetara"
             target="_blank"
             rel="noopener noreferrer"
             className="rounded-full bg-muted p-2 text-muted-foreground hover:text-foreground transition-colors"

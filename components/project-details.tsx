@@ -91,7 +91,8 @@ const getProjectDetails = (slug?: string) => {
     }
   }
 
-  // Add a new case for the Bossbusworld project in the getProjectDetails function
+  // Update the Bossbusworld project details to include more specific information about the role and technologies
+
   if (slug === "bossbusworld") {
     return {
       client: "Bossbusworld",
@@ -107,6 +108,10 @@ const getProjectDetails = (slug?: string) => {
         "API Documentation",
         "Travel Industry",
         "Fleet Management",
+        "Swagger/OpenAPI",
+        "SDK Development",
+        "Developer Portal",
+        "Product Strategy",
       ],
       website: "https://bossbus-technologies.web.app/",
       websiteLabel: "Visit Website",

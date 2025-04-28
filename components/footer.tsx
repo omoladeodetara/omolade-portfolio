@@ -16,7 +16,12 @@ export function Footer() {
 
         <div className="flex flex-col items-center md:items-end gap-4">
           <div className="flex items-center gap-4">
-            <Link href="https://github.com/omoladeodetara" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <Link
+              href="https://github.com/omoladeodetara"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
               <Github className="h-5 w-5 text-muted-foreground hover:text-foreground transition-colors" />
             </Link>
             <Link

@@ -32,7 +32,7 @@ export default function MoneybasePage() {
 
       <div className="relative aspect-video overflow-hidden rounded-lg mb-12">
         <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/moneybase-IwSJUYE6IIeTZwUc9ISx9LJbJQaUS1.png"
+          src="/moneybase-images/desktop/trading-interface.png"
           alt="Moneybase fractional shares trading interface showing the purchase flow"
           fill
           className="object-contain bg-[#1AA7FF]"

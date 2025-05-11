@@ -3,13 +3,24 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Briefcase, GraduationCap, Award, Rocket, Code, ChevronDown, ChevronUp, Linkedin } from "lucide-react"
+import {
+  Briefcase,
+  GraduationCap,
+  Award,
+  Rocket,
+  Code,
+  ChevronDown,
+  ChevronUp,
+  Linkedin,
+  ArrowRight,
+} from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { FeaturedBlogPosts } from "@/components/sections/featured-blog-posts"
 // Add the import for LinkedInFeaturedPosts at the top of the file with the other imports
 import { MediaAppearances } from "@/components/sections/media-appearances"
+import Link from "next/link"
 
 export default function Home() {
   // Track expanded items by their IDs
@@ -59,7 +70,7 @@ export default function Home() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold tracking-tight mb-4">Omolade Jordan Odetara</h1>
           <p className="text-xl text-[#62748e] max-w-2xl mx-auto">
-            Product Professional | Deep Tech | Interoperability
+            Dynamic Pricing AI Product | Deep Tech | Interoperability
           </p>
           <div className="flex flex-wrap justify-center gap-2 mt-4">
             <Badge className="bg-[#615fff] hover:bg-[#615fff]/80">Space Exploration</Badge>
@@ -73,9 +84,6 @@ export default function Home() {
             </a>
             <a href="https://www.linkedin.com/in/omoladeodetara" className="text-[#00d5be] hover:underline">
               LinkedIn
-            </a>
-            <a href="https://omoladeodetara.com/" className="text-[#00d5be] hover:underline">
-              Portfolio
             </a>
             <a href="https://omoladeodetara.hashnode.dev" className="text-[#00d5be] hover:underline">
               Blog
@@ -361,47 +369,59 @@ export default function Home() {
               <div className="h-[100px] md:h-[120px]"></div>
 
               <MinorTimelineItem
-                id="side-2023"
+                id="side-monizoom"
                 color="#00d5be"
-                title="Space Data Visualization Tool"
+                title="MoniZoom"
                 period="Mar - Jun 2023"
                 connectionId="2023-leanspace"
-                isExpanded={expandedItems.has("side-2023")}
-                onToggleExpand={() => toggleExpand("side-2023")}
-                details={sideProjects.find((exp) => exp.id === "side-2023")}
+                isExpanded={expandedItems.has("side-monizoom")}
+                onToggleExpand={() => toggleExpand("side-monizoom")}
+                details={sideProjects.find((exp) => exp.id === "side-monizoom")}
               />
 
               <MinorTimelineItem
-                id="side-2021"
+                id="side-nesthub"
                 color="#00d5be"
-                title="API Documentation Platform"
+                title="NestHub"
                 period="May - Dec 2021"
                 connectionId="2021-bossbusworld"
-                isExpanded={expandedItems.has("side-2021")}
-                onToggleExpand={() => toggleExpand("side-2021")}
-                details={sideProjects.find((exp) => exp.id === "side-2021")}
+                isExpanded={expandedItems.has("side-nesthub")}
+                onToggleExpand={() => toggleExpand("side-nesthub")}
+                details={sideProjects.find((exp) => exp.id === "side-nesthub")}
               />
 
               <MinorTimelineItem
-                id="side-2019"
+                id="side-founders"
                 color="#00d5be"
-                title="EdTech Consulting"
-                period="Jun 2019 - Dec 2020"
+                title="Co-founder and Lead Product Manager"
+                company="Founders and Innovators (FANDI)"
+                period="January 2021 - November 2022"
+                connectionId="2021-bossbusworld"
+                isExpanded={expandedItems.has("side-founders")}
+                onToggleExpand={() => toggleExpand("side-founders")}
+                details={sideProjects.find((exp) => exp.id === "side-founders")}
+              />
+
+              <MinorTimelineItem
+                id="side-zyleme"
+                color="#00d5be"
+                title="Zyleme"
+                period="Jan - Jul 2020"
                 connectionId="2019-pledre"
-                isExpanded={expandedItems.has("side-2019")}
-                onToggleExpand={() => toggleExpand("side-2019")}
-                details={sideProjects.find((exp) => exp.id === "side-2019")}
+                isExpanded={expandedItems.has("side-zyleme")}
+                onToggleExpand={() => toggleExpand("side-zyleme")}
+                details={sideProjects.find((exp) => exp.id === "side-zyleme")}
               />
 
               <MinorTimelineItem
-                id="side-2017"
+                id="side-talahive"
                 color="#00d5be"
-                title="Interactive Portfolio Builder"
-                period="Aug 2017 - Mar 2018"
+                title="TalaHive"
+                period="Sep 2018 - Feb 2019"
                 connectionId="2017-artquake"
-                isExpanded={expandedItems.has("side-2017")}
-                onToggleExpand={() => toggleExpand("side-2017")}
-                details={sideProjects.find((exp) => exp.id === "side-2017")}
+                isExpanded={expandedItems.has("side-talahive")}
+                onToggleExpand={() => toggleExpand("side-talahive")}
+                details={sideProjects.find((exp) => exp.id === "side-talahive")}
                 last={true}
               />
             </div>
@@ -424,7 +444,7 @@ interface ExperienceDetail {
   type: string
   title: string
   company?: string
-  companyLinkedIn?: string // Add this line
+  companyLinkedIn?: string
   period: string
   location?: string
   color: string
@@ -434,6 +454,8 @@ interface ExperienceDetail {
   achievements?: string[]
   technologies?: string[]
   links?: { label: string; url: string }[]
+  slug?: string // Add this line
+  connectionId?: string // Add this for the connection highlighting
 }
 
 // Now update the professionalExperiences array to include LinkedIn URLs
@@ -685,15 +707,11 @@ const volunteerActivities: ExperienceDetail[] = [
       "Contributed to policy recommendations presented at international space conference",
       "Helped organize virtual workshop on commercial space applications",
     ],
-    links: [{ label: "Space Generation Advisory Council", url: "https://spacegeneration.org/" }],
+    links: [{ label: "Space Generation Advisory Council", url: "https://generation.org/" }],
   },
   {
     id: "vol-2020-spacegen",
     type: "Volunteer Space Activity",
-    title: "SpaceGen United Delegate",
-    company: "Space Generation Advisory Council",
-    companyLinkedIn: "https://www.linkedin.com/company/space-generation-advisory-council/",
-    period: "July 2020",
     title: "SpaceGen United Delegate",
     company: "Space Generation Advisory Council",
     companyLinkedIn: "https://www.linkedin.com/company/space-generation-advisory-council/",
@@ -724,9 +742,14 @@ const sideProjects: ExperienceDetail[] = [
     period: "Mar - Jun 2023",
     color: "#00d5be",
     description:
-      "Developed a borderless banking platform that accelerates global reach with reliable financial services.",
+      "Developed a borderless banking platform that accelerates global reach with reliable financial services. Part of the FANDI venture studio portfolio.",
     technologies: ["React", "Next.js", "Tailwind CSS", "Financial APIs"],
-    links: [{ label: "MoniZoom Website", url: "https://monizoom.vercel.app/" }],
+    links: [
+      { label: "MoniZoom Website", url: "https://monizoom.vercel.app/" },
+      { label: "FANDI Venture Studio", url: "/projects/founders-and-innovators" },
+    ],
+    connectionId: "2023-leanspace",
+    slug: "monizoom",
   },
   {
     id: "side-nesthub",
@@ -734,28 +757,12 @@ const sideProjects: ExperienceDetail[] = [
     title: "NestHub",
     period: "May - Dec 2021",
     color: "#00d5be",
-    description: "Created a platform for connecting property developers with potential homeowners and investors.",
-    technologies: ["Node.js", "Express", "MongoDB", "React"],
-  },
-  {
-    id: "side-founders",
-    type: "Side Project",
-    title: "Founders and Innovators",
-    period: "Jun 2019 - Dec 2020",
-    color: "#00d5be",
     description:
-      "Contributed to a community platform for entrepreneurs and innovators to connect and collaborate on projects.",
-    technologies: ["Product Strategy", "Community Building"],
-    links: [{ label: "Crunchbase Profile", url: "https://www.crunchbase.com/organization/founders-and-innovators" }],
-  },
-  {
-    id: "side-stellarxplora",
-    type: "Side Project",
-    title: "StellarXplora",
-    period: "Aug 2017 - Mar 2018",
-    color: "#00d5be",
-    description: "Built an interactive space exploration educational tool for students and space enthusiasts.",
-    technologies: ["React", "Three.js", "WebGL", "Astronomy APIs"],
+      "Created a platform for connecting property developers with potential homeowners and investors. Part of the FANDI venture studio portfolio.",
+    technologies: ["Node.js", "Express", "MongoDB", "React"],
+    connectionId: "2021-bossbusworld",
+    slug: "nesthub",
+    links: [{ label: "FANDI Venture Studio", url: "/projects/founders-and-innovators" }],
   },
   {
     id: "side-zyleme",
@@ -765,6 +772,25 @@ const sideProjects: ExperienceDetail[] = [
     color: "#00d5be",
     description: "Developed a learning management system focused on skill development for tech professionals.",
     technologies: ["Vue.js", "Firebase", "EdTech"],
+    connectionId: "2019-pledre",
+    slug: "zyleme",
+  },
+  {
+    id: "side-founders",
+    type: "Side Project",
+    title: "Co-founder and Lead Product Manager",
+    company: "Founders and Innovators (FANDI)",
+    period: "January 2021 - November 2022",
+    color: "#00d5be",
+    description:
+      "Co-founded a venture studio and holding company that launched multiple startups across transportation, fintech, real estate, healthcare, and blockchain sectors.",
+    technologies: ["Venture Studio", "Startup Incubation", "Product Strategy", "Business Development"],
+    links: [
+      { label: "FANDI Portfolio", url: "/projects/founders-and-innovators" },
+      { label: "Crunchbase Profile", url: "https://www.crunchbase.com/organization/founders-and-innovators" },
+    ],
+    connectionId: "2021-bossbusworld", // Updated to match the correct timeline
+    slug: "founders-and-innovators",
   },
   {
     id: "side-talahive",
@@ -772,8 +798,11 @@ const sideProjects: ExperienceDetail[] = [
     title: "TalaHive",
     period: "Sep 2018 - Feb 2019",
     color: "#00d5be",
-    description: "Created a talent marketplace connecting African professionals with global opportunities.",
-    technologies: ["React", "Node.js", "PostgreSQL", "Talent Acquisition"],
+    description:
+      "Created a shared studio space and community for visual artists with professional-grade equipment, resources, and a collaborative environment.",
+    technologies: ["Studio Design", "Community Building", "Membership Models", "Creative Spaces", "Artist Resources"],
+    connectionId: "2017-artquake",
+    slug: "talahive",
   },
 ]
 
@@ -801,7 +830,7 @@ interface TimelineItemProps {
   companyLinkedIn?: string
   period: string
   location?: string
-  tags: string[]
+  tags?: string[]
   current?: boolean
   last?: boolean
   connectionId: string
@@ -815,7 +844,7 @@ interface MainTimelineItemProps {
   color: string
   title: string
   company?: string
-  companyLinkedIn?: string // Add this line
+  companyLinkedIn?: string
   period: string
   location?: string
   tags: string[]
@@ -921,16 +950,17 @@ function MainTimelineItem({
           </div>
 
           <div className="flex flex-wrap gap-2 mb-4">
-            {tags.map((tag, index) => (
-              <Badge
-                key={index}
-                variant="outline"
-                className="bg-[#f8fafc] border-[#90a1b9]/30"
-                style={{ color: color }}
-              >
-                {tag}
-              </Badge>
-            ))}
+            {tags &&
+              tags.map((tag, index) => (
+                <Badge
+                  key={index}
+                  variant="outline"
+                  className="bg-[#f8fafc] border-[#90a1b9]/30"
+                  style={{ color: color }}
+                >
+                  {tag}
+                </Badge>
+              ))}
           </div>
 
           <Button
@@ -1128,6 +1158,16 @@ function MinorTimelineItem({
             >
               {isExpanded ? <ChevronUp className="h-3 w-3" /> : <ChevronDown className="h-3 w-3" />}
             </Button>
+            {details?.slug && (
+              <div className="mt-1">
+                <Link
+                  href={`/projects/${details.slug}`}
+                  className="text-xs text-[#00d5be] hover:underline flex items-center"
+                >
+                  View Project <ArrowRight className="h-3 w-3 ml-1" />
+                </Link>
+              </div>
+            )}
           </div>
           <p className="text-xs text-[#62748e]">{period}</p>
         </div>

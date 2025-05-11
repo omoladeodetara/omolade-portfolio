@@ -20,26 +20,7 @@ export function ProjectGallery({ slug }: { slug?: string }) {
     },
   ]
 
-  // ASH B healthcare platform images
-  if (slug === "ash-b") {
-    images = [
-      {
-        id: 1,
-        src: "/healthcare-app-interface.png",
-        alt: "ASH B patient dashboard interface",
-      },
-      {
-        id: 2,
-        src: "/telemedicine-consultation.png",
-        alt: "Telemedicine video consultation",
-      },
-      {
-        id: 3,
-        src: "/healthcare-admin-dashboard.png",
-        alt: "Healthcare admin dashboard",
-      },
-    ]
-  }
+
 
   // TalaHive images
   if (slug === "talahive") {

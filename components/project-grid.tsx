@@ -1,241 +1,212 @@
 import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { AlertCircle, Clock } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card"
+import Image from "next/image"
 
-// Project data - in a real app, fetch from API/CMS
-const projects = [
+interface Project {
+  id: string
+  title: string
+  description: string
+  image: string
+  category: string
+  date: string
+  tags: string[]
+  featured?: boolean
+}
+
+const projects: Project[] = [
   {
-    id: 1,
-    title: "ASH B",
-    description:
-      "A comprehensive healthcare platform connecting patients with doctors through mobile/web applications with integrated telemedicine, appointment scheduling, and secure medical record management.",
-    image: "/ash-b-main-thumbnail.png",
-    tags: ["Healthcare", "Telemedicine", "HIPAA/GDPR", "FHIR", "Mobile Apps"],
-    category: "Professional Project",
-    period: "January 2023 - Present",
-    slug: "ash-b",
-    // Removed link property
+    id: "founders-and-innovators",
+    title: "Founders and Innovators (FANDI)",
+    description: "A venture studio and holding company launching startups across multiple sectors.",
+    image: "/fandi-images/venture-studio-workspace.png",
+    category: "Venture Studio",
+    date: "Jan 2021 - Nov 2022",
+    tags: ["Product Management", "Entrepreneurship", "Venture Building"],
+    featured: true,
   },
   {
-    id: 2,
-    title: "Moneybase",
-    description:
-      "A product management case study on implementing fractional share trading for a modern fintech platform.",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/moneybase-IwSJUYE6IIeTZwUc9ISx9LJbJQaUS1.png",
-    tags: ["PM Case Study", "Fintech", "Fractional Shares", "Product Management"],
-    category: "Professional Project",
-    period: "September 2022",
-    slug: "moneybase",
-    // No link property
+    id: "bossbusworld",
+    title: "Bossbus",
+    description: "A new age of transport solutions with integrated fleet management and travel booking platform.",
+    image: "/bossbus-images/bossbus-technologies-homepage.jpeg",
+    category: "Transportation",
+    date: "Jan 2021 - Nov 2022",
+    tags: ["Product Management", "Transportation", "Logistics"],
   },
   {
-    id: 3,
-    title: "Bossbusworld",
-    description:
-      "A platform for third-party developers in the travel industry with API integrations for airlines and fleet management systems.",
-    image: "/data-driven-insights.png",
-    tags: ["Node.js", "Express", "MongoDB", "REST APIs", "OAuth 2.0"],
-    category: "Professional Project",
-    period: "January 2021 - November 2022",
-    slug: "bossbusworld",
-    link: "https://bossbus-technologies.web.app/",
+    id: "monizoom",
+    title: "Monizoom",
+    description: "Payment solutions for anyone, offering borderless banking and financial services.",
+    image: "/monizoom-images/project-thumbnail.png",
+    category: "Fintech",
+    date: "Mar 2021 - Oct 2022",
+    tags: ["Product Management", "Fintech", "Payments"],
   },
   {
-    id: 4,
-    title: "StellarXplora",
-    description:
-      "A venture studio focused on building, funding, and scaling the best space startups with a focus on the African market.",
-    image: "/stellarxplora-thumbnail.png",
-    tags: ["Space Technology", "Venture Studio", "Earth Observation", "African Market"],
-    category: "Professional Project",
-    period: "2022 - Present",
-    slug: "stellarxplora",
-    link: "https://stellarxplora.decilehub.com/",
-    status: "active",
-  },
-  {
-    id: 5,
-    title: "Blockchain Africa Summit",
-    description:
-      "A planned hybrid blockchain conference and exhibition focused on blockchain, crypto, metaverse, and Web 3.0 technologies.",
-    image: "/blockchain-summit.png",
-    tags: ["Blockchain", "Web3", "Event Planning", "Project Management"],
-    category: "Professional Project",
-    period: "Planned for April 2022",
-    slug: "blockchain-africa-summit",
-    status: "postponed",
-  },
-  {
-    id: 6,
-    title: "The Space Convention",
-    description:
-      "A global space industry event bringing together delegates from all sectors that intersect with the space industry.",
-    image: "/space-exploration-overview.png",
-    tags: ["Space Industry", "Event Planning", "International Collaboration"],
-    category: "Professional Project",
-    period: "Planned (Postponed)",
-    slug: "space-convention",
-    status: "postponed",
-  },
-  {
-    id: 7,
-    title: "AfricaNFTArt",
-    description:
-      "A marketplace for African artists to showcase, sell their work as NFTs, and earn royalties on every resale.",
-    image: "/vibrant-african-nft-gallery.png",
-    tags: ["Blockchain", "NFT", "Digital Art", "Marketplace", "Product Strategy"],
-    category: "Professional Project",
-    period: "July 2021 - December 2021",
-    slug: "africanftart",
-    status: "early-stage",
-  },
-  {
-    id: 8,
-    title: "Harvest Credit",
-    description:
-      "An API platform connecting credit facilities to merchants, allowing users to pay with loans directly at checkout.",
-    image: "/financial-overview-dashboard.png",
-    tags: ["Fintech", "API Development", "Credit Systems", "E-commerce"],
-    category: "Professional Project",
-    period: "2020",
-    slug: "harvest-credit",
-    status: "prototype",
-  },
-  {
-    id: 9,
-    title: "MoniZoom",
-    description: "A borderless banking platform that accelerates global reach with reliable financial services.",
-    image: "/financial-overview-dashboard.png",
-    tags: ["React", "Next.js", "Tailwind CSS", "Financial APIs"],
-    category: "Side Project",
-    period: "Mar - Jun 2023",
-    slug: "monizoom",
-    link: "https://monizoom.vercel.app/",
-  },
-  {
-    id: 10,
+    id: "nesthub",
     title: "NestHub",
-    description: "A platform for connecting property developers with potential homeowners and investors.",
-    image: "/modern-real-estate-interface.png",
-    tags: ["Node.js", "Express", "MongoDB", "React"],
-    category: "Side Project",
-    period: "May - Dec 2021",
-    slug: "nesthub",
+    description: "Building Nigeria's premium real estate platform connecting developers, owners, and seekers.",
+    image: "/nesthub-images/nesthub-homepage.png",
+    category: "Real Estate",
+    date: "Apr 2021 - Sep 2022",
+    tags: ["Product Management", "Real Estate", "Proptech"],
   },
   {
-    id: 11,
-    title: "Founders and Innovators",
-    description: "A community platform for entrepreneurs and innovators to connect and collaborate on projects.",
-    image: "/collaborative-growth.png",
-    tags: ["Product Strategy", "Community Building"],
-    category: "Side Project",
-    period: "Jun 2019 - Dec 2020",
-    slug: "founders-and-innovators",
-    link: "https://www.crunchbase.com/organization/founders-and-innovators",
+    id: "ash-b",
+    title: "ASH B",
+    description: "Comprehensive healthcare platform with integrated telemedicine and patient management.",
+    image: "/ash-b-images/project-thumbnail.png",
+    category: "Healthcare",
+    date: "Jun 2021 - Aug 2022",
+    tags: ["Product Management", "Healthcare", "Telemedicine"],
   },
   {
-    id: 12,
-    title: "SpaceEd Explorer",
-    description: "An interactive space exploration educational tool for students and space enthusiasts.",
-    image: "/space-exploration-overview.png",
-    tags: ["React", "Three.js", "WebGL", "Astronomy APIs"],
-    category: "Side Project",
-    period: "Aug 2017 - Mar 2018",
-    slug: "space-ed-explorer",
+    id: "blockchain-africa-summit",
+    title: "Blockchain Africa Summit",
+    description: "Conference and exhibition focused on blockchain, crypto, and Web 3.0 technologies.",
+    image: "/blockchain-africa-summit-images/project-thumbnail.png",
+    category: "Event",
+    date: "Feb 2022 - Apr 2022",
+    tags: ["Event Management", "Blockchain", "Web3"],
   },
   {
-    id: 13,
+    id: "space-convention",
+    title: "Space Convention",
+    description: "A gathering of space industry professionals, enthusiasts, and policymakers.",
+    image: "/space-convention-images/project-thumbnail.png",
+    category: "Event",
+    date: "Sep 2019 - Nov 2019",
+    tags: ["Event Management", "Space", "Policy"],
+  },
+  {
+    id: "africanftart",
+    title: "AfricaNFT Art",
+    description: "A platform showcasing and selling digital art from African artists as NFTs.",
+    image: "/africanft-images/project-thumbnail.png",
+    category: "Art & Technology",
+    date: "Jul 2021 - Dec 2021",
+    tags: ["Product Management", "NFT", "Digital Art"],
+  },
+  {
+    id: "harvest-credit",
+    title: "Harvest Credit",
+    description: "A microfinance platform providing loans to small businesses and entrepreneurs.",
+    image: "/harvest-credit-images/project-thumbnail.png",
+    category: "Fintech",
+    date: "May 2020 - Aug 2020",
+    tags: ["Product Management", "Fintech", "Microfinance"],
+  },
+  {
+    id: "stellarxplora",
+    title: "StellarXplora",
+    description: "An educational platform about space exploration and astronomy for young learners.",
+    image: "/stellarxplora-thumbnail.png",
+    category: "Education",
+    date: "Jan 2020 - Apr 2020",
+    tags: ["Product Management", "Education", "Space"],
+  },
+  {
+    id: "zyleme",
     title: "Zyleme",
-    description: "A learning management system focused on skill development for tech professionals.",
-    image: "/digital-classroom-dashboard.png",
-    tags: ["Vue.js", "Firebase", "EdTech"],
-    category: "Side Project",
-    period: "Jan - Jul 2020",
-    slug: "zyleme",
+    description: "A learning management system for corporate training and development.",
+    image: "/zyleme-mobile-learning-dashboard.png",
+    category: "Education",
+    date: "Mar 2019 - Dec 2019",
+    tags: ["Product Management", "Education", "Corporate Training"],
   },
   {
-    id: 14,
+    id: "talahive",
     title: "TalaHive",
-    description:
-      "A specialized workspace and community hub for visual artists, providing studios for painting, graphics, animation, sculpture, ceramics, fashion, and textile arts.",
-    image: "/african-talent-network.png",
-    tags: ["Visual Arts", "Studio Space", "Artist Community", "Workspace"],
-    category: "Side Project",
-    period: "Sep 2018 - Feb 2019",
-    slug: "talahive",
-    videoUrl: "https://youtu.be/92aq_qREv-A",
+    description: "A creative space for artists, designers, and makers to collaborate and create.",
+    image: "/talahive-images/talahive-logo.png",
+    category: "Creative Space",
+    date: "Jun 2018 - Feb 2019",
+    tags: ["Space Management", "Art", "Community"],
+  },
+  {
+    id: "moneybase",
+    title: "Moneybase",
+    description: "A trading platform for stocks, ETFs, and cryptocurrencies.",
+    image: "/moneybase-images/project-thumbnail.png",
+    category: "Fintech",
+    date: "Sep 2017 - May 2018",
+    tags: ["Product Management", "Fintech", "Trading"],
+  },
+  {
+    id: "artention-magazine",
+    title: "Artention Magazine",
+    description: "A digital publication showcasing emerging artists and art trends.",
+    image: "/artention-magazine-images/artention-logo.png",
+    category: "Media",
+    date: "Jan 2017 - Aug 2017",
+    tags: ["Content Management", "Art", "Publishing"],
+  },
+  {
+    id: "folktoon",
+    title: "Folktoon",
+    description: "An animation studio creating content based on African folklore and stories.",
+    image: "/folktoon-placeholder.png",
+    category: "Entertainment",
+    date: "Apr 2016 - Dec 2016",
+    tags: ["Production Management", "Animation", "Storytelling"],
   },
 ]
 
 interface ProjectGridProps {
-  filter?: string
+  filter: string
 }
 
-export function ProjectGrid({ filter = "all" }: ProjectGridProps) {
-  // Filter projects based on the active filter
-  const filteredProjects = projects.filter((project) => {
-    if (filter === "all") return true
-    if (filter === "professional") return project.category === "Professional Project"
-    if (filter === "side") return project.category === "Side Project"
-    return true
-  })
+export function ProjectGrid({ filter }: ProjectGridProps) {
+  const filteredProjects =
+    filter === "all"
+      ? projects
+      : projects.filter(
+          (project) =>
+            project.category.toLowerCase() === filter.toLowerCase() ||
+            project.tags.some((tag) => tag.toLowerCase() === filter.toLowerCase()),
+        )
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 py-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
       {filteredProjects.map((project) => (
-        <Card key={project.id} className="overflow-hidden">
-          <div className="aspect-video w-full overflow-hidden relative">
-            <img
-              src={project.image || "/placeholder.svg"}
-              alt={project.title}
-              className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-            />
-            {project.status === "postponed" && (
-              <div className="absolute top-2 right-2 bg-amber-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
-                <AlertCircle className="h-3 w-3 mr-1" />
-                Planned
-              </div>
-            )}
-            {project.status === "planning" && (
-              <div className="absolute top-2 right-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
-                <Clock className="h-3 w-3 mr-1" />
-                In Planning
-              </div>
-            )}
-            {project.status === "active" && (
-              <div className="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full flex items-center">
-                <AlertCircle className="h-3 w-3 mr-1" />
-                Active
-              </div>
-            )}
-          </div>
-          <CardContent className="p-4">
-            <h3 className="text-xl font-bold">{project.title}</h3>
-            <p className="text-sm text-muted-foreground mt-2">{project.description}</p>
-            {project.period && <p className="text-xs text-muted-foreground mt-1">{project.period}</p>}
-            <div className="flex flex-wrap gap-2 mt-4">
-              {project.tags.map((tag) => (
-                <Badge key={tag} variant="secondary">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-            <div className="mt-4 flex gap-2">
-              <Button asChild variant="outline" className="flex-1">
-                <Link href={`/projects/${project.slug}`}>View Details</Link>
-              </Button>
-              {project.link && (
-                <Button asChild variant="default" className="flex-1">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer">
-                    Visit Site
-                  </a>
-                </Button>
+        <Link href={`/projects/${project.id}`} key={project.id} className="group">
+          <Card className="overflow-hidden h-full transition-all hover:shadow-md">
+            <div className="aspect-video relative overflow-hidden">
+              <Image
+                src={project.image || "/placeholder.svg?height=400&width=600&query=project thumbnail"}
+                alt={project.title}
+                width={600}
+                height={400}
+                className="w-full h-full object-cover transition-transform group-hover:scale-105"
+              />
+              {project.featured && (
+                <div className="absolute top-2 right-2">
+                  <Badge variant="secondary" className="bg-primary text-primary-foreground">
+                    Featured
+                  </Badge>
+                </div>
               )}
             </div>
-          </CardContent>
-        </Card>
+            <CardContent className="p-5">
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-xl font-bold line-clamp-1">{project.title}</h3>
+                <span className="text-xs text-muted-foreground whitespace-nowrap ml-2">{project.date}</span>
+              </div>
+              <p className="text-muted-foreground mb-3 line-clamp-2">{project.description}</p>
+              <div className="flex flex-wrap gap-2 mt-auto">
+                <Badge variant="outline" className="bg-muted/50">
+                  {project.category}
+                </Badge>
+                {project.tags.slice(0, 2).map((tag) => (
+                  <Badge key={tag} variant="outline" className="bg-muted/50">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </Link>
       ))}
     </div>
   )

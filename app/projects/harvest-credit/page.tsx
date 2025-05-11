@@ -42,7 +42,7 @@ export default function HarvestCreditPage() {
 
       <div className="relative aspect-video overflow-hidden rounded-lg mb-12 bg-gradient-to-r from-emerald-600 to-teal-600 flex items-center justify-center">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[url('/financial-overview-dashboard.png')] bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-[url('/harvest-credit-images/hero-image.png')] bg-cover bg-center"></div>
         </div>
         <div className="text-center text-white p-8 relative z-10">
           <h2 className="text-3xl font-bold mb-4">HARVEST CREDIT</h2>
@@ -56,7 +56,7 @@ export default function HarvestCreditPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
         <div className="md:col-span-2">
           <div className="prose dark:prose-invert max-w-none">
-            <h2>Project Overview</h2>
+            <h2>Overview</h2>
             <p>
               Harvest Credit is an API platform that connects credit facilities to merchants, allowing users to choose
               to pay through one of their listed loan providers directly at checkout. This eliminates the traditional

@@ -42,11 +42,18 @@ export default function BlockchainAfricaSummitPage() {
         </AlertDescription>
       </Alert>
 
-      <div className="relative aspect-video overflow-hidden rounded-lg mb-12 bg-gradient-to-r from-purple-600 to-blue-600 flex items-center justify-center">
-        <div className="text-center text-white p-8">
-          <h2 className="text-3xl font-bold mb-4">FANDI BLOCKCHAIN FACTORY</h2>
-          <h3 className="text-xl mb-2">BLOCKCHAIN AFRICA SUMMIT 2022</h3>
-          <p className="text-lg">BLOCKCHAIN, CRYPTO, METAVERSE & WEB 3.0: THE FUTURE & WHY IT MATTERS</p>
+      <div className="relative aspect-video overflow-hidden rounded-lg mb-12">
+        <img
+          src="/blockchain-africa-summit-images/project-thumbnail.png"
+          alt="Blockchain Africa Summit 2022"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+          <div className="text-center text-white p-8">
+            <h2 className="text-3xl font-bold mb-4">FANDI BLOCKCHAIN FACTORY</h2>
+            <h3 className="text-xl mb-2">BLOCKCHAIN AFRICA SUMMIT 2022</h3>
+            <p className="text-lg">BLOCKCHAIN, CRYPTO, METAVERSE & WEB 3.0: THE FUTURE & WHY IT MATTERS</p>
+          </div>
         </div>
       </div>
 
@@ -184,22 +191,7 @@ export default function BlockchainAfricaSummitPage() {
             </p>
 
             <h2>Budget Planning</h2>
-            <p>
-              A comprehensive budget was developed for the event, with estimated costs of approximately ₦2,750,000
-              ($6,100) covering:
-            </p>
-            <ul>
-              <li>Venue rental: ₦450,000</li>
-              <li>Tea breaks and lunch: ₦1,000,000</li>
-              <li>Event materials and souvenirs: ₦250,000</li>
-              <li>Marketing and promotion: ₦700,000</li>
-              <li>Photography and videography: ₦350,000</li>
-            </ul>
-            <p>
-              The revenue model was designed to cover these costs through participant fees and project presentation
-              fees, with projected revenue of approximately ₦3,500,000 ($6,100).
-            </p>
-
+            <p>Redacted</p>
             <h2>Key Learnings</h2>
             <p>
               Despite the event not taking place as planned, the project provided valuable insights and experience in:

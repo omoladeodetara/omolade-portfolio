@@ -44,7 +44,7 @@ export default function SpaceConventionPage() {
 
       <div className="relative aspect-video overflow-hidden rounded-lg mb-12 bg-gradient-to-r from-indigo-900 to-purple-900 flex items-center justify-center">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[url('/space-exploration-overview.png')] bg-cover bg-center"></div>
+          <div className="absolute inset-0 bg-[url('/space-convention-images/project-thumbnail.png')] bg-cover bg-center"></div>
         </div>
         <div className="text-center text-white p-8 relative z-10">
           <h2 className="text-3xl font-bold mb-4">THE SPACE CONVENTION</h2>

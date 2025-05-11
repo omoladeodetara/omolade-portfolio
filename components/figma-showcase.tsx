@@ -13,7 +13,7 @@ interface FigmaShowcaseProps {
 
 export function FigmaShowcase({ projectSlug, embedUrl, title = "Design Showcase", description }: FigmaShowcaseProps) {
   // Only render for specific projects
-  if (projectSlug !== "monizoom") {
+  if (projectSlug !== "monizoom" && projectSlug !== "ash-b") {
     return null
   }
 

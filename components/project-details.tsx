@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge"
+import Link from "next/link"
 
-interface ProjectDetailsProps {
+export interface ProjectDetailsProps {
   slug?: string
 }
 
@@ -26,7 +27,9 @@ const getProjectDetails = (slug?: string) => {
         "iOS/Android",
         "Responsive Web Design",
       ],
-      // Removed website and websiteLabel properties
+      additionalLinks: [{ url: "/projects/founders-and-innovators", label: "FANDI Venture Studio" }],
+      parentCompany: "FANDI (Founders and Innovators)",
+      parentCompanySlug: "founders-and-innovators",
     }
   }
 
@@ -34,7 +37,7 @@ const getProjectDetails = (slug?: string) => {
     return {
       client: "Interview Assessment",
       role: "Product Manager Case Study",
-      timeline: "September 2022",
+      timeline: "September 2023",
       technologies: [
         "Fintech",
         "Trading Platform",
@@ -49,7 +52,6 @@ const getProjectDetails = (slug?: string) => {
         "Agile Development",
         "User Research",
       ],
-      // No website property
     }
   }
 
@@ -71,6 +73,9 @@ const getProjectDetails = (slug?: string) => {
       ],
       website: "https://monizoom.vercel.app/",
       websiteLabel: "Visit Demo",
+      additionalLinks: [{ url: "/projects/founders-and-innovators", label: "FANDI Venture Studio" }],
+      parentCompany: "FANDI (Founders and Innovators)",
+      parentCompanySlug: "founders-and-innovators",
     }
   }
 
@@ -78,7 +83,7 @@ const getProjectDetails = (slug?: string) => {
     return {
       client: "Self-initiated",
       role: "Founder & Product Lead",
-      timeline: "4 months",
+      timeline: "September 2018 - February 2019",
       technologies: [
         "Visual Arts Studios",
         "Community Building",
@@ -86,12 +91,8 @@ const getProjectDetails = (slug?: string) => {
         "Exhibition Space",
         "Digital Access Systems",
       ],
-      website: "https://youtu.be/92aq_qREv-A",
-      websiteLabel: "Watch Application Video",
     }
   }
-
-  // Update the Bossbusworld project details to include more specific information about the role and technologies
 
   if (slug === "bossbusworld") {
     return {
@@ -118,11 +119,13 @@ const getProjectDetails = (slug?: string) => {
       additionalLinks: [
         { url: "https://bossbus-landingpage.web.app/", label: "Original Landing Page" },
         { url: "https://bossbus-global.firebaseapp.com/", label: "Web Application" },
+        { url: "/projects/founders-and-innovators", label: "FANDI Venture Studio" },
       ],
+      parentCompany: "FANDI (Founders and Innovators)",
+      parentCompanySlug: "founders-and-innovators",
     }
   }
 
-  // Add details for the Blockchain Africa Summit
   if (slug === "blockchain-africa-summit") {
     return {
       client: "FANDI Blockchain Factory",
@@ -141,11 +144,15 @@ const getProjectDetails = (slug?: string) => {
         "Sponsor Outreach",
         "Budget Development",
       ],
-      additionalLinks: [{ url: "https://bossbus-technologies.web.app/", label: "Bossbus Website (Planned Sponsor)" }],
+      additionalLinks: [
+        { url: "https://bossbus-technologies.web.app/", label: "Bossbus Website (Planned Sponsor)" },
+        { url: "/projects/founders-and-innovators", label: "FANDI Venture Studio" },
+      ],
+      parentCompany: "FANDI (Founders and Innovators)",
+      parentCompanySlug: "founders-and-innovators",
     }
   }
 
-  // Add details for Harvest Credit
   if (slug === "harvest-credit") {
     return {
       client: "Application for Funding",
@@ -165,7 +172,6 @@ const getProjectDetails = (slug?: string) => {
     }
   }
 
-  // Add details for The Space Convention
   if (slug === "space-convention") {
     return {
       client: "Stellar Xplora",
@@ -190,7 +196,6 @@ const getProjectDetails = (slug?: string) => {
     }
   }
 
-  // Add details for StellarXplora
   if (slug === "stellarxplora") {
     return {
       client: "Self-initiated",
@@ -213,14 +218,124 @@ const getProjectDetails = (slug?: string) => {
     }
   }
 
+  if (slug === "artention-magazine") {
+    return {
+      client: "Self-initiated",
+      role: "Founder & Editor",
+      timeline: "June 2018 - 2019",
+      technologies: [
+        "Art Magazine",
+        "Content Curation",
+        "Editorial Design",
+        "Digital Publishing",
+        "Social Media Management",
+        "Community Building",
+        "Art Promotion",
+        "Exhibition Coverage",
+      ],
+      website: "https://www.instagram.com/artentionmagazine/",
+      websiteLabel: "Instagram Page",
+    }
+  }
+
+  if (slug === "folktoon") {
+    return {
+      client: "Self-initiated",
+      role: "Co-founder & Creative Director",
+      timeline: "2019 - Present",
+      technologies: [
+        "User Experience Design",
+        "Brand & Identity",
+        "Film Production",
+        "Motion Graphics",
+        "Creative Strategy",
+        "UI/UX Design",
+        "Frontend Development",
+        "Animation",
+        "Video Production",
+        "Art Direction",
+      ],
+      website: "https://www.instagram.com/folktoon_ng/",
+      websiteLabel: "Instagram Page",
+      status: "Active",
+    }
+  }
+
+  if (slug === "founders-and-innovators") {
+    return {
+      client: "Self-initiated",
+      role: "Co-founder and Lead Product Manager",
+      timeline: "January 2021 - November 2022",
+      technologies: [
+        "Social Impact",
+        "Technology Innovation",
+        "Community Building",
+        "Housing Solutions",
+        "Sustainable Energy",
+        "Transportation",
+        "Financial Inclusion",
+        "African Innovation",
+        "WordPress",
+        "Social Media",
+      ],
+      website: "https://foundersandinnovators.wordpress.com/",
+      websiteLabel: "Visit Website",
+      additionalLinks: [
+        { url: "https://www.crunchbase.com/organization/founders-and-innovators", label: "Crunchbase Profile" },
+      ],
+    }
+  }
+
+  if (slug === "nesthub") {
+    return {
+      client: "NestHub Africa Limited",
+      role: "Lead Developer & Product Strategist",
+      timeline: "May - December 2021",
+      technologies: [
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "React",
+        "Real Estate",
+        "Payment APIs",
+        "Geolocation",
+        "Document Verification",
+        "Responsive Design",
+      ],
+      website: "https://nesthub.africa",
+      websiteLabel: "Visit Website",
+      additionalLinks: [{ url: "/projects/founders-and-innovators", label: "FANDI Venture Studio" }],
+      parentCompany: "FANDI (Founders and Innovators)",
+      parentCompanySlug: "founders-and-innovators",
+    }
+  }
+
+  if (slug === "zyleme") {
+    return {
+      client: "Zyleme Healthcare Education",
+      role: "Lead UX Designer & Product Strategist",
+      timeline: "August 2021 - May 2022",
+      technologies: [
+        "React",
+        "Node.js",
+        "PostgreSQL",
+        "GraphQL",
+        "AWS",
+        "Docker",
+        "Healthcare LMS",
+        "Compliance Training",
+        "Mobile Learning",
+        "Interactive Simulations",
+      ],
+    }
+  }
+
   // Default details for other projects
   return {
-    client: "Self-initiated",
-    role: "Founder & Product Lead",
-    timeline: "4 months",
-    technologies: ["Community Building", "Space Design", "Membership Models"],
-    website: "https://example.com",
-    websiteLabel: "Visit Website",
+    client: "Undisclosed",
+    role: "Various Roles",
+    timeline: "Undisclosed",
+    technologies: ["Various Technologies"],
   }
 }
 
@@ -245,6 +360,15 @@ export function ProjectDetails({ slug }: ProjectDetailsProps) {
         <h4 className="text-sm font-medium text-muted-foreground mb-2">Timeline</h4>
         <p>{details.timeline}</p>
       </div>
+
+      {details.parentCompany && (
+        <div>
+          <h4 className="text-sm font-medium text-muted-foreground mb-2">Parent Company</h4>
+          <Link href={`/projects/${details.parentCompanySlug}`} className="text-primary hover:underline">
+            {details.parentCompany}
+          </Link>
+        </div>
+      )}
 
       <div>
         <h4 className="text-sm font-medium text-muted-foreground mb-2">Technologies</h4>

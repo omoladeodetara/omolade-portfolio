@@ -53,14 +53,6 @@ export function Footer() {
               </svg>
             </Link>
           </div>
-          <div className="flex gap-4 text-sm text-muted-foreground">
-            <Link href="/privacy-policy" className="hover:text-foreground transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms-of-service" className="hover:text-foreground transition-colors">
-              Terms of Service
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

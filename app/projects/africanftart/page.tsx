@@ -26,7 +26,7 @@ export default function AfricaNftArtPage() {
 
       <div className="relative aspect-video overflow-hidden rounded-lg mb-12">
         <Image
-          src="/vibrant-african-nft-gallery.png"
+          src="/africanft-images/africanft-hero.png"
           alt="AfricaNFTArt Marketplace"
           fill
           className="object-cover"
@@ -115,8 +115,8 @@ export default function AfricaNftArtPage() {
                   <CardContent className="pt-6">
                     <h3 className="text-lg font-bold mb-2">August 13, 2021</h3>
                     <p className="text-sm text-muted-foreground">
-                      Partnership with Benin Guild of Sculptors established, expanding our network of traditional
-                      artists entering the digital space.
+                      Partnership with a group of Sculptors established, expanding our network of traditional artists
+                      entering the digital space.
                     </p>
                   </CardContent>
                 </Card>

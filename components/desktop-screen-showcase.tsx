@@ -16,21 +16,21 @@ export function DesktopScreenShowcase() {
       title: "Doctor Dashboard",
       description:
         "The central hub for healthcare providers, featuring a personalized welcome, calendar integration, patient requests queue, upcoming appointments, and consultation history. The interface prioritizes urgent cases and provides quick access to patient information.",
-      image: "/ash-b-desktop/dashboard-view.png",
+      image: "/ash-b-images/desktop/dashboard.png",
     },
     {
       id: "schedule",
       title: "Appointment Schedule",
       description:
         "The scheduling interface allows doctors to manage their appointments efficiently. It displays both weekly schedules and appointments for other days, with clear patient information, symptoms, and communication options for each appointment.",
-      image: "/ash-b-desktop/schedule-view.png",
+      image: "/ash-b-images/desktop/schedule.png",
     },
     {
       id: "telemedicine",
       title: "Telemedicine Interface",
       description:
         "The telemedicine platform enables secure video consultations with patients. Doctors can view patient information, edit medical records, prescribe medications, and communicate through multiple channels (video, audio, chat) in a unified interface.",
-      image: "/ash-b-desktop/message-view.png",
+      image: "/ash-b-images/desktop/telemedicine.png",
     },
   ]
 

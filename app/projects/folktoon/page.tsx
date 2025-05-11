@@ -4,7 +4,6 @@ import Link from "next/link"
 import { ArrowLeft, ExternalLink } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { ProjectGallery } from "@/components/project-gallery"
 import { ProjectDetails } from "@/components/project-details"
 import { RelatedProjects } from "@/components/related-projects"
 
@@ -24,16 +23,28 @@ export default function FolktoonPage() {
         </Button>
       </Link>
 
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-4">Folktoon Network</h1>
-        <p className="text-xl text-muted-foreground">
-          A collective of designers, coders, artists & creative strategists
-        </p>
+      <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8">
+        <div className="relative w-24 h-24 flex-shrink-0">
+          <Image
+            src="/folktoon-images/folktoon-logo.png"
+            alt="Folktoon Network Logo"
+            width={96}
+            height={96}
+            className="object-contain"
+            priority
+          />
+        </div>
+        <div>
+          <h1 className="text-4xl font-bold mb-2">Folktoon Network</h1>
+          <p className="text-xl text-muted-foreground">
+            A collective of designers, coders, artists & creative strategists
+          </p>
+        </div>
       </div>
 
       <div className="relative aspect-video overflow-hidden rounded-lg mb-12">
         <Image
-          src="/folktoon-placeholder.png"
+          src="/folktoon-images/folktoon-hero.png"
           alt="Folktoon Network - Creative Collective"
           fill
           className="object-cover"
@@ -164,7 +175,6 @@ export default function FolktoonPage() {
         </div>
       </div>
 
-      <ProjectGallery slug="folktoon" />
       <RelatedProjects />
     </div>
   )

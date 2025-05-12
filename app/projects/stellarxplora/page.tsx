@@ -34,7 +34,7 @@ export default function StellarXploraPage() {
 
       <div className="relative overflow-hidden rounded-lg mb-12">
         <Image
-          src="/stellarxplora-thumbnail.png"
+          src="/stellarxplora-images/stellarxplora-banner.png"
           alt="StellarXplora hero image showing spacecraft engine with text: StellarXplora is where the best space startups are built, funded and scaled."
           width={1200}
           height={400}

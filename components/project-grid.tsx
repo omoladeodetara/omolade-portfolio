@@ -101,7 +101,7 @@ const projects: Project[] = [
     id: "stellarxplora",
     title: "StellarXplora",
     description: "An educational platform about space exploration and astronomy for young learners.",
-    image: "/stellarxplora-thumbnail.png",
+    image: "/stellarxplora-images/stellarxplora-banner.png",
     category: "Education",
     date: "Jan 2020 - Apr 2020",
     tags: ["Product Management", "Education", "Space"],

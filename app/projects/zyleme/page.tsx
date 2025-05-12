@@ -1,43 +1,19 @@
 import Image from "next/image"
 import { PageHeader } from "@/components/page-header"
-import { RelatedProjects } from "@/components/related-projects"
 import { MobileScreenGallery } from "@/components/mobile-screen-gallery"
-import { ContactCta } from "@/components/sections/contact-cta"
+import { RelatedProjects } from "@/components/related-projects"
+
+const mobileScreens = [
+  "/zyleme-images/mobile/learning-dashboard.png",
+  "/zyleme-images/mobile/course-view.png",
+  "/zyleme-images/mobile/assessment.png",
+  "/zyleme-images/mobile/certificates.png",
+  "/zyleme-images/mobile/notifications.png",
+]
+
+const desktopScreens = ["/zyleme-images/desktop/course-builder.png"]
 
 export default function ZylemePage() {
-  const mobileScreens = [
-    {
-      id: "dashboard",
-      url: "/images/projects/zyleme/mobile-learning-dashboard.png",
-      title: "Learning Dashboard",
-      description: "Personalized learning dashboard with course progress and recommendations.",
-    },
-    {
-      id: "course",
-      url: "/images/projects/zyleme/mobile-course-view.png",
-      title: "Course View",
-      description: "Interactive course content with multimedia learning materials.",
-    },
-    {
-      id: "assessment",
-      url: "/images/projects/zyleme/mobile-assessment.png",
-      title: "Assessments",
-      description: "Engaging assessment interface with various question types and immediate feedback.",
-    },
-    {
-      id: "certificates",
-      url: "/images/projects/zyleme/mobile-certificates.png",
-      title: "Certificates",
-      description: "Digital certificate management for completed courses and achievements.",
-    },
-    {
-      id: "notifications",
-      url: "/images/projects/zyleme/mobile-notifications.png",
-      title: "Notifications",
-      description: "Smart notification system for course updates and learning reminders.",
-    },
-  ]
-
   const relatedProjects = [
     {
       title: "MoniZoom",
@@ -64,7 +40,7 @@ export default function ZylemePage() {
       {/* Hero Image */}
       <div className="mt-8 mb-16 relative rounded-xl overflow-hidden h-[500px]">
         <Image
-          src="/images/projects/zyleme/course-builder.png"
+          src="/zyleme-images/desktop/course-builder.png"
           alt="Zyleme Learning Platform"
           fill
           className="object-cover"
@@ -137,7 +113,7 @@ export default function ZylemePage() {
         <h2 className="text-3xl font-bold mb-8">Course Builder</h2>
         <div className="bg-gray-100 dark:bg-gray-800 rounded-xl overflow-hidden">
           <Image
-            src="/images/projects/zyleme/course-builder.png"
+            src="/zyleme-images/desktop/course-builder.png"
             alt="Zyleme Course Builder Interface"
             width={1200}
             height={675}
@@ -155,9 +131,6 @@ export default function ZylemePage() {
 
       {/* Related Projects */}
       <RelatedProjects projects={relatedProjects} />
-
-      {/* Contact CTA */}
-      <ContactCta />
     </main>
   )
 }

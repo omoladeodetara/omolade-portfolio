@@ -4,7 +4,6 @@ import Image from "next/image"
 import { ArrowLeft } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { RelatedProjects } from "@/components/related-projects"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Rocket, Globe, Users, Target } from "lucide-react"
@@ -35,7 +34,7 @@ export default function StellarXploraPage() {
 
       <div className="relative overflow-hidden rounded-lg mb-12">
         <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-VyNvxMuA0cVzGjYNUD3XtUYQqUyq4o.png"
+          src="/stellarxplora-thumbnail.png"
           alt="StellarXplora hero image showing spacecraft engine with text: StellarXplora is where the best space startups are built, funded and scaled."
           width={1200}
           height={400}
@@ -221,8 +220,6 @@ export default function StellarXploraPage() {
           <ProjectDetailsStellarXplora />
         </div>
       </div>
-
-      <RelatedProjects />
     </div>
   )
 }

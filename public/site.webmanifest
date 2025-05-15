@@ -1,0 +1,19 @@
+{
+  "name": "Omolade Jordan Odetara",
+  "short_name": "Odetara",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1DA1F2",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

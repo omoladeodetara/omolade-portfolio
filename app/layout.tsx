@@ -14,6 +14,14 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   title: "Omolade Jordan Odetara | Product Professional",
   description: "Product Professional specializing in Deep Tech and Interoperability",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/favicon.png", sizes: "192x192" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
     generator: 'v0.dev'
 }
 

@@ -213,12 +213,12 @@ export default function Home() {
               <MainTimelineItem
                 id="2024-sii"
                 color="#615fff"
-                title="Product"
-                company="Groupe SII"
+                title="Product Owner, Dynamic Pricing"
+                company="Amadeus"
                 companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2024-sii")?.companyLinkedIn}
                 period="July 2024 - Present"
-                location="France"
-                tags={["Airlines", "Travel", "AI Driven Dynamic Pricing", "Amadeus"]}
+                location="France · via Groupe SII"
+                tags={["Airlines", "Travel", "AI Driven Dynamic Pricing", "API Governance"]}
                 current={true}
                 connectionId="2024-sii"
                 isExpanded={expandedItems.has("2024-sii")}
@@ -463,27 +463,23 @@ const professionalExperiences: ExperienceDetail[] = [
   {
     id: "2024-sii",
     type: "Professional Experience",
-    title: "Product",
-    company: "Groupe SII",
-    companyLinkedIn: "https://www.linkedin.com/company/groupe-sii/",
+    title: "Product Owner, Dynamic Pricing",
+    company: "Amadeus",
+    companyLinkedIn: "https://www.linkedin.com/company/amadeus/",
     period: "July 2024 - Present",
-    location: "France",
+    location: "France · via Groupe SII",
     color: "#615fff",
-    tags: ["Airlines", "Travel", "AI Driven Dynamic Pricing", "Amadeus"],
+    tags: ["Airlines", "Travel", "AI Driven Dynamic Pricing", "API Governance"],
     description:
-      "Working on AI-driven dynamic pricing solutions for the airline industry, leveraging Amadeus technology to optimize revenue management systems.",
+      "External contractor to Amadeus through Groupe SII, working on airline dynamic pricing. Product Definition Analyst from July 2024, Product Owner from June 2025, and Product Definition Analyst again since December 2025.",
     responsibilities: [
-      "Lead the development of AI-driven pricing algorithms for airline ticket pricing",
-      "Collaborate with data scientists to implement machine learning models",
-      "Work with Amadeus APIs to integrate pricing solutions into airline systems",
-      "Manage stakeholder relationships across multiple airline clients",
+      "Implement and manage a centralized dynamic pricing cockpit that unifies pricing across all products, services and sales channels",
+      "Give airline pricing analysts precise control over AI-driven pricing strategies, so they can react quickly to the market",
+      "Give pricing analysts real-time visibility into revenue trends and competitor pricing",
+      "Own API and data model governance",
+      "Write technical studies and solution overviews for dynamic pricing enhancements, and validate them with developers, QA and stakeholders",
     ],
-    achievements: [
-      "Successfully launched beta version of dynamic pricing tool",
-      "Reduced implementation time by 30% through improved API integration",
-      "Developed comprehensive documentation for third-party developers",
-    ],
-    technologies: ["Python", "Machine Learning", "Amadeus API", "AWS", "Docker"],
+    links: [{ label: "Groupe SII", url: "https://www.linkedin.com/company/groupe-sii/" }],
   },
   {
     id: "2023-leanspace",

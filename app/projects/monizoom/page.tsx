@@ -1,4 +1,4 @@
-import { PageHeader } from "@/components/page-header"
+import { ProjectHeader } from "@/components/project-header"
 import { RelatedProjects } from "@/components/related-projects"
 
 export default function MoniZoomPage() {
@@ -18,8 +18,8 @@ export default function MoniZoomPage() {
   ]
 
   return (
-    <main className="container mx-auto px-4 py-12">
-      <PageHeader
+    <main className="container py-10">
+      <ProjectHeader
         title="MoniZoom"
         subtitle="Bank Without Borders"
         description="A global fintech platform enabling fast, secure, and borderless financial transactions for individuals and businesses across 180+ countries."

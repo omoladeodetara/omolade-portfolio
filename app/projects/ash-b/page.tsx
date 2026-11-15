@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { PageHeader } from "@/components/page-header"
+import { ProjectHeader } from "@/components/project-header"
 import { MobileScreenGallery } from "@/components/mobile-screen-gallery"
 import { RelatedProjects } from "@/components/related-projects"
 
@@ -51,8 +51,8 @@ export default function ASHBProjectPage() {
   ]
 
   return (
-    <main className="container mx-auto px-4 py-12">
-      <PageHeader
+    <main className="container py-10">
+      <ProjectHeader
         title="ASH B"
         subtitle="Healthcare Management Platform"
         description="A comprehensive healthcare management platform designed to streamline patient care and administrative workflows."

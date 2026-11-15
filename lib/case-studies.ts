@@ -158,7 +158,7 @@ export const caseStudies: Record<string, CaseStudy> = {
         heading: "What it does",
         paragraphs: ["Two pieces that share one goal: let a developer decide where each request goes."],
         points: [
-          { title: "Browser extension", body: "Create rules to intercept, mock or modify HTTP requests, watch intercepted calls live, and keep rules in Chrome sync storage." },
+          { title: "Browser extension", body: "Create rules that return a mock response, redirect a URL, or set request and response headers (including CORS). Rules are kept in Chrome storage on your machine, and one switch in the popup turns them all off." },
           { title: "Environment selector", body: "An npm package that lets you pick environments (dev, UAT, prod) and data sources (mock, local, API), or merge several at once. It hides itself in production." },
         ],
       },

@@ -12,9 +12,21 @@ interface Project {
   date: string
   tags: string[]
   featured?: boolean
+  kind: "professional" | "side"
 }
 
 const projects: Project[] = [
+  {
+    id: "last-price",
+    title: "Last Price",
+    description: "Price computation as a service: an API and MCP server that computes and verifies prices for software and AI agents.",
+    image: "/last-price-images/project-thumbnail.png",
+    category: "AI Infrastructure",
+    date: "Jan 2026 - Present",
+    tags: ["Founder", "API Platform", "AI Agents", "Pricing"],
+    featured: true,
+    kind: "professional",
+  },
   {
     id: "founders-and-innovators",
     title: "Founders and Innovators (FANDI)",
@@ -24,6 +36,7 @@ const projects: Project[] = [
     date: "Jan 2021 - Nov 2022",
     tags: ["Product Management", "Entrepreneurship", "Venture Building"],
     featured: true,
+    kind: "side",
   },
   {
     id: "bossbusworld",
@@ -33,6 +46,7 @@ const projects: Project[] = [
     category: "Transportation",
     date: "Jan 2021 - Nov 2022",
     tags: ["Product Management", "Transportation", "Logistics"],
+    kind: "professional",
   },
   {
     id: "monizoom",
@@ -42,6 +56,7 @@ const projects: Project[] = [
     category: "Fintech",
     date: "Mar 2021 - Oct 2022",
     tags: ["Product Management", "Fintech", "Payments"],
+    kind: "side",
   },
   {
     id: "nesthub",
@@ -51,6 +66,7 @@ const projects: Project[] = [
     category: "Real Estate",
     date: "Apr 2021 - Sep 2022",
     tags: ["Product Management", "Real Estate", "Proptech"],
+    kind: "side",
   },
   {
     id: "ash-b",
@@ -60,6 +76,7 @@ const projects: Project[] = [
     category: "Healthcare",
     date: "Jun 2021 - Aug 2022",
     tags: ["Product Management", "Healthcare", "Telemedicine"],
+    kind: "side",
   },
   {
     id: "blockchain-africa-summit",
@@ -69,6 +86,7 @@ const projects: Project[] = [
     category: "Event",
     date: "Feb 2022 - Apr 2022",
     tags: ["Event Management", "Blockchain", "Web3"],
+    kind: "side",
   },
   {
     id: "space-convention",
@@ -78,6 +96,7 @@ const projects: Project[] = [
     category: "Event",
     date: "Sep 2019 - Nov 2019",
     tags: ["Event Management", "Space", "Policy"],
+    kind: "side",
   },
   {
     id: "africanftart",
@@ -87,6 +106,7 @@ const projects: Project[] = [
     category: "Art & Technology",
     date: "Jul 2021 - Dec 2021",
     tags: ["Product Management", "NFT", "Digital Art"],
+    kind: "side",
   },
   {
     id: "harvest-credit",
@@ -96,6 +116,7 @@ const projects: Project[] = [
     category: "Fintech",
     date: "May 2020 - Aug 2020",
     tags: ["Product Management", "Fintech", "Microfinance"],
+    kind: "side",
   },
   {
     id: "stellarxplora",
@@ -105,6 +126,7 @@ const projects: Project[] = [
     category: "Education",
     date: "Jan 2020 - Apr 2020",
     tags: ["Product Management", "Education", "Space"],
+    kind: "side",
   },
   {
     id: "zyleme",
@@ -114,6 +136,7 @@ const projects: Project[] = [
     category: "Education",
     date: "Mar 2019 - Dec 2019",
     tags: ["Product Management", "Education", "Corporate Training"],
+    kind: "side",
   },
   {
     id: "talahive",
@@ -123,6 +146,7 @@ const projects: Project[] = [
     category: "Creative Space",
     date: "Jun 2018 - Feb 2019",
     tags: ["Space Management", "Art", "Community"],
+    kind: "side",
   },
   {
     id: "moneybase",
@@ -132,6 +156,7 @@ const projects: Project[] = [
     category: "Fintech",
     date: "Sep 2017 - May 2018",
     tags: ["Product Management", "Fintech", "Trading"],
+    kind: "side",
   },
   {
     id: "artention-magazine",
@@ -141,6 +166,7 @@ const projects: Project[] = [
     category: "Media",
     date: "Jan 2017 - Aug 2017",
     tags: ["Content Management", "Art", "Publishing"],
+    kind: "side",
   },
   {
     id: "folktoon",
@@ -150,6 +176,7 @@ const projects: Project[] = [
     category: "Entertainment",
     date: "Apr 2016 - Dec 2016",
     tags: ["Production Management", "Animation", "Storytelling"],
+    kind: "side",
   },
 ]
 
@@ -161,7 +188,9 @@ export function ProjectGrid({ filter }: ProjectGridProps) {
   const filteredProjects =
     filter === "all"
       ? projects
-      : projects.filter(
+      : filter === "professional" || filter === "side"
+        ? projects.filter((project) => project.kind === filter)
+        : projects.filter(
           (project) =>
             project.category.toLowerCase() === filter.toLowerCase() ||
             project.tags.some((tag) => tag.toLowerCase() === filter.toLowerCase()),
@@ -198,7 +227,7 @@ export function ProjectGrid({ filter }: ProjectGridProps) {
                 <Badge variant="outline" className="bg-muted/50">
                   {project.category}
                 </Badge>
-                {project.tags.slice(0, 2).map((tag) => (
+                {project.tags.filter((tag) => tag !== project.category).slice(0, 2).map((tag) => (
                   <Badge key={tag} variant="outline" className="bg-muted/50">
                     {tag}
                   </Badge>

@@ -115,7 +115,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     subtitle: "Telemetry anomaly detection for satellites",
     description:
       "A serverless service that ingests satellite telemetry in real time, detects anomalies against thresholds, and manages alerts.",
-    image: { src: "/project-cards/tads.png", alt: "TADS title card" },
+    image: { src: "/project-cards/tads.jpg", alt: "The TADS dashboard running against the telemetry simulator, with detected anomalies" },
     client: "Side project",
     timeline: "May 2025",
     role: "Builder",
@@ -143,7 +143,12 @@ export const caseStudies: Record<string, CaseStudy> = {
     subtitle: "Mock, modify and override API calls",
     description:
       "Developer tools for testing against APIs that are not ready, or not safe to touch: a Chrome extension and an npm package.",
-    image: { src: "/project-cards/interzept.png", alt: "Interzept title card" },
+    image: { src: "/project-cards/interzept.jpg", alt: "The Interzept options page, creating a rule that overrides a checkout API response" },
+    extraImage: {
+      src: "/project-cards/interzept-popup.jpg",
+      alt: "The Interzept extension popup",
+      caption: "The extension popup: response overrides, URL redirects, request modification and CORS bypass.",
+    },
     client: "Side project",
     timeline: "December 2025",
     role: "Builder",
@@ -170,7 +175,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     subtitle: "See API workflows written in Arazzo",
     description:
       "A React component, published on npm, that lints and draws Arazzo specifications: the OpenAPI Initiative's standard for describing sequences of API calls.",
-    image: { src: "/project-cards/arazzo-visualizer.png", alt: "Arazzo Visualizer title card" },
+    image: { src: "/project-cards/arazzo-visualizer.jpg", alt: "The Arazzo Visualizer demo showing the purchase workflow step by step, with 0 lint errors" },
     client: "Side project",
     timeline: "August 2025 - November 2025",
     role: "Builder",
@@ -201,7 +206,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     subtitle: "One voice for every AI tool on your machine",
     description:
       "Reads what Claude Code, Codex, Copilot CLI and browser chats say, as they say it, so you can follow several agents without watching every window.",
-    image: { src: "/project-cards/aloud.png", alt: "Aloud title card" },
+    image: { src: "/project-cards/aloud.jpg", alt: "The Aloud phone page, with replies from Claude, Codex and Copilot sessions" },
     client: "Side project",
     timeline: "September 2026 - October 2026",
     role: "Builder",
@@ -229,7 +234,12 @@ export const caseStudies: Record<string, CaseStudy> = {
     subtitle: "The Church of the Prompt",
     description:
       "A philosophical toolkit for prompt consciousness: noticing, questioning and consciously rewriting the mental scripts that shape our lives.",
-    image: { src: "/project-cards/promptuary.png", alt: "Promptuary title card" },
+    image: { src: "/project-cards/promptuary.jpg", alt: "The Promptuary home page" },
+    extraImage: {
+      src: "/project-cards/promptuary-levels.jpg",
+      alt: "The Five Levels of Prompt Consciousness page",
+      caption: "The five levels of prompt consciousness, each with a practice.",
+    },
     client: "Side project",
     timeline: "June 2025",
     role: "Author and builder",
@@ -281,7 +291,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     subtitle: "Dark compact performance graphs at sign-in",
     description:
       "On Windows it opens Task Manager in the compact Performance Summary view at sign-in. On macOS and Linux it runs a small monitor with CPU, memory, disk, network and GPU graphs.",
-    image: { src: "/project-cards/compact-task-manager.png", alt: "Compact Task Manager title card" },
+    image: { src: "/project-cards/compact-task-manager.jpg", alt: "The Compact Task Manager monitor on Linux: CPU, memory, disk, network and GPU" },
     client: "Side project",
     timeline: "October 2026",
     role: "Builder",

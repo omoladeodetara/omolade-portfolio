@@ -61,13 +61,6 @@ export default function AboutPage() {
           and the Global Expert Group on Sustainable Lunar Activities. Our framework for sustainable lunar activities
           was presented to the UN Committee on the Peaceful Uses of Outer Space.
         </p>
-        <p>
-          I am also the founder of{" "}
-          <Link href="https://last-price.ai" className="underline underline-offset-4">
-            Last Price
-          </Link>
-          , price computation as a service.
-        </p>
       </section>
 
       <section className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">

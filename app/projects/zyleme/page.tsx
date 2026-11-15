@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { PageHeader } from "@/components/page-header"
+import { ProjectHeader } from "@/components/project-header"
 import { MobileScreenGallery } from "@/components/mobile-screen-gallery"
 import { RelatedProjects } from "@/components/related-projects"
 
@@ -30,8 +30,8 @@ export default function ZylemePage() {
   ]
 
   return (
-    <main className="container mx-auto px-4 py-12">
-      <PageHeader
+    <main className="container py-10">
+      <ProjectHeader
         title="Zyleme"
         subtitle="Learning Experience Platform"
         description="A comprehensive digital learning platform designed to deliver engaging educational experiences and track learner progress."

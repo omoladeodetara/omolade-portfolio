@@ -1,16 +1,21 @@
 interface PageHeaderProps {
-  heading: string
+  heading?: string
+  title?: string
   subheading?: string
+  description?: string
 }
 
-export function PageHeader({ heading, subheading }: PageHeaderProps) {
+// Accepts both the heading/subheading and title/description names, because
+// pages were written with both and the unmatched ones rendered no title.
+export function PageHeader({ heading, title, subheading, description }: PageHeaderProps) {
+  const h = heading ?? title
+  const sub = subheading ?? description
   return (
     <div className="flex flex-col items-center text-center space-y-4 pb-10 pt-6">
-      <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">{heading}</h1>
-      {subheading && <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed">{subheading}</p>}
+      {h && <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl">{h}</h1>}
+      {sub && <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed">{sub}</p>}
     </div>
   )
 }
 
-// Add default export
 export default PageHeader

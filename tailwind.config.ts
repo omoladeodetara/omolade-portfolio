@@ -38,8 +38,8 @@ const config = {
           foreground: "#0f172b",
         },
         muted: {
-          DEFAULT: "#90a1b9",
-          foreground: "#f8fafc",
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -52,6 +52,16 @@ const config = {
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
+        },
+      },
+      // Body headings in project write-ups match the "Project Overview" page style.
+      typography: {
+        DEFAULT: {
+          css: {
+            h2: { fontSize: "1.875rem", fontWeight: "700", marginTop: "2.5rem", marginBottom: "1.25rem" },
+            "h2:first-child": { marginTop: "0" },
+            h3: { fontSize: "1.25rem", fontWeight: "600" },
+          },
         },
       },
       keyframes: {
@@ -70,7 +80,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config
 
 export default config

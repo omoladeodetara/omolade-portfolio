@@ -1,178 +1,131 @@
+import type { Metadata } from "next"
+import Link from "next/link"
+
 import PageHeader from "@/components/page-header"
-import AboutHero from "@/components/sections/about-hero"
-import Skills from "@/components/sections/skills"
-import TimelineSection, { type TimelineItem } from "@/components/sections/timeline"
-import Values from "@/components/sections/values"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "@/components/ui/card"
+import { type ExperienceDetail, professionalExperiences, volunteerActivities } from "@/lib/experience"
+
+export const metadata: Metadata = {
+  title: "About | Omolade Jordan Odetara",
+  description:
+    "Product owner for airline dynamic pricing at Amadeus, founder of Last Price, and co-author of the lunar framework presented to UN COPUOS.",
+}
+
+const focusAreas = [
+  "Space Exploration",
+  "Air Travel and Transportation",
+  "Developer Experiences",
+  "Infrastructure and Ecosystems",
+]
+
+const skills = [
+  "Dynamic Pricing",
+  "API and Data Model Governance",
+  "Developer Experience",
+  "Platform Strategy",
+  "Product Strategy",
+  "Product Delivery",
+  "Stakeholder Management",
+  "B2B",
+]
 
 export default function AboutPage() {
-  // Work experiences data
-  const workExperiences: TimelineItem[] = [
-    {
-      id: "work-1",
-      type: "work",
-      title: "Senior Software Engineer",
-      organization: "Tech Innovations Inc.",
-      location: "San Francisco, CA",
-      startDate: "Jan 2021",
-      endDate: "Present",
-      description:
-        "Leading the development of cloud-based solutions for enterprise clients. Architected and implemented scalable microservices using Node.js and TypeScript. Mentored junior developers and established best practices for the engineering team.",
-      responsibilities: [
-        "Lead a team of 5 developers working on cloud infrastructure",
-        "Design and implement RESTful APIs and microservices",
-        "Collaborate with product managers to define feature specifications",
-        "Conduct code reviews and provide technical guidance",
-      ],
-      achievements: [
-        "Reduced API response time by 40% through optimization",
-        "Implemented CI/CD pipeline that decreased deployment time by 60%",
-        "Led migration from monolith to microservices architecture",
-      ],
-      technologies: ["TypeScript", "Node.js", "React", "AWS", "Docker", "Kubernetes"],
-      links: [{ label: "Company Website", url: "https://example.com/tech-innovations" }],
-      linkedinUrl: "https://www.linkedin.com/company/tech-innovations-inc",
-    },
-    {
-      id: "work-2",
-      type: "work",
-      title: "Software Engineer",
-      organization: "DataViz Solutions",
-      location: "Boston, MA",
-      startDate: "Mar 2018",
-      endDate: "Dec 2020",
-      description:
-        "Developed data visualization tools and dashboards for financial services clients. Built front-end applications using React and D3.js. Collaborated with data scientists to implement complex analytical features.",
-      responsibilities: [
-        "Developed interactive data visualization components",
-        "Optimized front-end performance for large datasets",
-        "Integrated with various financial data APIs",
-        "Participated in agile development process",
-      ],
-      achievements: [
-        "Created a reusable chart library that reduced development time by 30%",
-        "Implemented real-time data streaming that became a key selling point",
-        'Received "Engineer of the Quarter" award twice',
-      ],
-      technologies: ["JavaScript", "React", "D3.js", "GraphQL", "Python"],
-      links: [{ label: "Project Demo", url: "https://example.com/dataviz-demo" }],
-      linkedinUrl: "https://www.linkedin.com/company/dataviz-solutions",
-    },
-    {
-      id: "work-3",
-      type: "work",
-      title: "Junior Developer",
-      organization: "WebSoft Systems",
-      location: "Chicago, IL",
-      startDate: "Jun 2016",
-      endDate: "Feb 2018",
-      description:
-        "Started as an intern and was quickly promoted to a full-time position. Worked on web applications for small to medium businesses. Gained experience in full-stack development using PHP, MySQL, and JavaScript.",
-      responsibilities: [
-        "Developed and maintained client websites",
-        "Implemented responsive designs from mockups",
-        "Fixed bugs and added features to existing applications",
-        "Assisted with database design and optimization",
-      ],
-      achievements: [
-        "Promoted from intern to junior developer in 3 months",
-        "Built an internal tool that automated reporting tasks",
-        "Reduced page load time by 25% through optimization techniques",
-      ],
-      technologies: ["PHP", "MySQL", "JavaScript", "HTML/CSS", "jQuery"],
-      links: [{ label: "Portfolio", url: "https://example.com/early-work" }],
-      linkedinUrl: "https://www.linkedin.com/company/websoft-systems",
-    },
-  ]
-
-  // Side projects data
-  const sideProjects: TimelineItem[] = [
-    {
-      id: "project-1",
-      type: "project",
-      title: "Open Source Contributor",
-      organization: "React Ecosystem",
-      startDate: "Jan 2021",
-      endDate: "Present",
-      description:
-        "Active contributor to several open-source projects in the React ecosystem. Focused on improving documentation, fixing bugs, and adding new features.",
-      technologies: ["React", "TypeScript", "Jest"],
-      links: [{ label: "GitHub Profile", url: "https://github.com/yourusername" }],
-      linkedinUrl: "https://www.linkedin.com/company/react",
-    },
-    {
-      id: "project-2",
-      type: "project",
-      title: "Mobile App Developer",
-      organization: "Fitness Tracker App",
-      startDate: "Jun 2019",
-      endDate: "Dec 2020",
-      description:
-        "Developed a fitness tracking mobile application that allows users to record workouts, track progress, and set goals.",
-      technologies: ["React Native", "Firebase", "Redux"],
-      links: [{ label: "App Store", url: "https://example.com/fitness-app" }],
-    },
-    {
-      id: "project-3",
-      type: "project",
-      title: "Technical Blogger",
-      organization: "Dev.to & Medium",
-      startDate: "Mar 2018",
-      endDate: "Present",
-      description:
-        "Write technical articles and tutorials on web development, focusing on JavaScript frameworks and best practices.",
-      links: [{ label: "Blog", url: "https://dev.to/yourusername" }],
-    },
-  ]
-
-  // Volunteer work data
-  const volunteerWork: TimelineItem[] = [
-    {
-      id: "volunteer-1",
-      type: "volunteer",
-      title: "Mentor",
-      organization: "Code for Good",
-      startDate: "Jan 2021",
-      endDate: "Present",
-      description:
-        "Mentor aspiring developers from underrepresented groups in tech. Provide guidance on projects, career advice, and technical support.",
-      links: [{ label: "Organization", url: "https://example.com/code-for-good" }],
-      linkedinUrl: "https://www.linkedin.com/company/code-for-good",
-    },
-    {
-      id: "volunteer-2",
-      type: "volunteer",
-      title: "Workshop Instructor",
-      organization: "Local Tech Meetup",
-      startDate: "Sep 2019",
-      endDate: "Dec 2020",
-      description:
-        "Conducted monthly workshops on web development topics for beginners. Created hands-on exercises and learning materials.",
-      links: [{ label: "Meetup Group", url: "https://meetup.com/local-tech" }],
-      linkedinUrl: "https://www.linkedin.com/company/local-tech-meetup",
-    },
-    {
-      id: "volunteer-3",
-      type: "volunteer",
-      title: "Tech Lead",
-      organization: "Nonprofit Website Project",
-      startDate: "May 2017",
-      endDate: "Apr 2018",
-      description:
-        "Led a team of volunteers to redesign and develop a website for a local nonprofit organization. Managed project timeline and delegated tasks.",
-      technologies: ["WordPress", "PHP", "JavaScript"],
-      links: [{ label: "Project", url: "https://example.com/nonprofit" }],
-      linkedinUrl: "https://www.linkedin.com/company/nonprofit-website-project",
-    },
-  ]
-
   return (
-    <div>
-      <PageHeader title="About Me" description="Learn about my background, skills, and professional journey" />
+    <div className="container py-10">
+      <PageHeader
+        title="About Me"
+        description="AI infrastructure for price computation and dynamic pricing. API and data model governance. Interoperability in deep tech."
+      />
 
-      <AboutHero />
-      <Skills />
-      <TimelineSection workExperiences={workExperiences} sideProjects={sideProjects} volunteerWork={volunteerWork} />
-      <Values />
+      <section className="max-w-3xl mx-auto space-y-4 text-lg leading-relaxed mb-16">
+        <h2 className="text-3xl font-bold">My Story</h2>
+        <p>
+          I reimagine deep tech and product ecosystems: I break down silos and integrate different systems so that
+          they work as one. My work runs from research and development to building and shipping the integrations
+          themselves.
+        </p>
+        <p>
+          Today I own airline dynamic pricing product work at Amadeus, as an external contractor through Groupe SII.
+          Before that I led telemetry, anomaly detection and the developer platform strategy at Leanspace, a cloud
+          platform for space companies, and developer experience at Bossbusworld, where airlines could book luxury
+          vehicles for their passengers through our APIs.
+        </p>
+        <p>
+          Since November 2021 I have been a technical co-author and expert delegate for the Moon Village Association
+          and the Global Expert Group on Sustainable Lunar Activities. Our framework for sustainable lunar activities
+          was presented to the UN Committee on the Peaceful Uses of Outer Space.
+        </p>
+        <p>
+          I am also the founder of{" "}
+          <Link href="https://last-price.ai" className="underline underline-offset-4">
+            Last Price
+          </Link>
+          , price computation as a service.
+        </p>
+      </section>
+
+      <section className="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <Card>
+          <CardContent className="p-6">
+            <h3 className="text-xl font-bold mb-4">Where I work</h3>
+            <div className="flex flex-wrap gap-2">
+              {focusAreas.map((area) => (
+                <Badge key={area} variant="secondary">
+                  {area}
+                </Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-6">
+            <h3 className="text-xl font-bold mb-4">What I do</h3>
+            <div className="flex flex-wrap gap-2">
+              {skills.map((skill) => (
+                <Badge key={skill} variant="secondary">
+                  {skill}
+                </Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </section>
+
+      <section className="max-w-3xl mx-auto mb-16">
+        <h2 className="text-3xl font-bold mb-6">Experience</h2>
+        <ExperienceList items={professionalExperiences} />
+      </section>
+
+      <section className="max-w-3xl mx-auto mb-16">
+        <h2 className="text-3xl font-bold mb-6">Space volunteering</h2>
+        <ExperienceList items={volunteerActivities} />
+        <p className="mt-8 text-muted-foreground">
+          The details, side projects and links are on the{" "}
+          <Link href="/" className="underline underline-offset-4">
+            timeline on the home page
+          </Link>
+          .
+        </p>
+      </section>
     </div>
+  )
+}
+
+function ExperienceList({ items }: { items: ExperienceDetail[] }) {
+  return (
+    <ul className="divide-y divide-border border-y border-border">
+      {items.map((item) => (
+        <li key={item.id} className="py-4 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+          <div>
+            <p className="font-semibold">{item.title}</p>
+            <p className="text-muted-foreground">
+              {[item.company, item.location].filter(Boolean).join(" · ")}
+            </p>
+          </div>
+          <p className="text-sm text-muted-foreground sm:text-right shrink-0">{item.period}</p>
+        </li>
+      ))}
+    </ul>
   )
 }

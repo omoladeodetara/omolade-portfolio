@@ -9,25 +9,29 @@ import { type ExperienceDetail, professionalExperiences, volunteerActivities } f
 export const metadata: Metadata = {
   title: "About | Omolade Jordan Odetara",
   description:
-    "Product owner for airline dynamic pricing at Amadeus, founder of Last Price, and co-author of the lunar framework presented to UN COPUOS.",
+    "Technical product manager for API platforms, model inference and AI pricing. Amadeus, Leanspace, Bossbus, and co-author of the lunar framework presented to UN COPUOS.",
 }
 
 const focusAreas = [
-  "Space Exploration",
-  "Air Travel and Transportation",
-  "Developer Experiences",
-  "Infrastructure and Ecosystems",
+  "Travel",
+  "Space",
+  "Mobility",
+  "Enterprise API platforms",
 ]
 
 const skills = [
-  "Dynamic Pricing",
-  "API and Data Model Governance",
-  "Developer Experience",
-  "Platform Strategy",
-  "Product Strategy",
-  "Product Delivery",
-  "Stakeholder Management",
-  "B2B",
+  "Inference and API product strategy",
+  "Pricing and packaging",
+  "Usage-based billing and metering",
+  "Developer platforms and portals",
+  "Enterprise discovery",
+  "Success metrics and product analytics",
+  "OpenAPI",
+  "JSON Schema",
+  "MCP servers for AI agents",
+  "ML lifecycle",
+  "ONNX",
+  "MLflow",
 ]
 
 export default function AboutPage() {
@@ -35,21 +39,22 @@ export default function AboutPage() {
     <div className="container py-10">
       <PageHeader
         title="About Me"
-        description="AI infrastructure for price computation and dynamic pricing. API and data model governance. Interoperability in deep tech."
+        description="Technical Product Manager · API platforms, model inference and AI pricing"
       />
 
       <section className="max-w-3xl mx-auto space-y-4 text-lg leading-relaxed mb-16">
         <h2 className="text-3xl font-bold">My Story</h2>
         <p>
-          I reimagine deep tech and product ecosystems: I break down silos and integrate different systems so that
-          they work as one. My work runs from research and development to building and shipping the integrations
-          themselves.
+          I'm a technical product manager with 9 years building product integrations, shipping API products,
+          developer platforms and AI-driven pricing systems for enterprise customers in travel, space and mobility. I
+          own the contract between models and the systems that consume them, and the governance that lets change
+          happen rapidly.
         </p>
         <p>
-          Today I own airline dynamic pricing product work at Amadeus, as an external contractor through Groupe SII.
-          Before that I led telemetry, anomaly detection and the developer platform strategy at Leanspace, a cloud
-          platform for space companies, and developer experience at Bossbusworld, where airlines could book luxury
-          vehicles for their passengers through our APIs.
+          At Amadeus I work on airline dynamic pricing: a pricing cockpit for airline analysts, API and data model
+          governance, and the input contracts for production ML models. Before that I led telemetry and anomaly
+          detection and the developer platform strategy at Leanspace, a cloud platform for space operators, and the
+          airline integrations and developer platform at Bossbus.
         </p>
         <p>
           Since November 2021 I have been a technical co-author and expert delegate for the Moon Village Association

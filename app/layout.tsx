@@ -12,8 +12,9 @@ import "@/app/globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata = {
-  title: "Omolade Jordan Odetara | Product Professional",
-  description: "Product Professional specializing in Deep Tech and Interoperability",
+  title: "Omolade Jordan Odetara | Technical Product Manager",
+  description:
+    "Technical product manager building API products, developer platforms, model inference and AI-driven pricing for travel, space and mobility.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "32x32" },

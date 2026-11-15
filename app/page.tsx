@@ -28,6 +28,21 @@ import {
   volunteerActivities,
 } from "@/lib/experience"
 
+const coreSkills = [
+  "Inference and API product strategy",
+  "Pricing and packaging",
+  "Usage-based billing and metering",
+  "Developer platforms and portals",
+  "Enterprise discovery",
+  "Success metrics and product analytics",
+  "OpenAPI",
+  "JSON Schema",
+  "MCP servers for AI agents",
+  "ML lifecycle",
+  "ONNX",
+  "MLflow",
+]
+
 export default function Home() {
   // Track expanded items by their IDs
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set())
@@ -76,7 +91,7 @@ export default function Home() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold tracking-tight mb-4">Omolade Jordan Odetara</h1>
           <p className="text-xl text-[#62748e] max-w-2xl mx-auto">
-            Dynamic Pricing AI Product | Deep Tech | Interoperability
+            Technical Product Manager · API platforms, model inference and AI pricing
           </p>
           <div className="flex flex-wrap justify-center gap-2 mt-4">
             <Badge className="bg-[#615fff] hover:bg-[#615fff]/80">Space Exploration</Badge>
@@ -158,12 +173,11 @@ export default function Home() {
               <Award className="mr-2 text-[#ffb86a]" /> Core Skills
             </h2>
             <div className="flex flex-wrap gap-2">
-              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Product Delivery</Badge>
-              <Badge className="bg-[#314158] hover:bg-[#314158]/80">B2B</Badge>
-              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Stakeholder Management</Badge>
-              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Product Strategy</Badge>
-              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Developer Experience</Badge>
-              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Platform Strategy</Badge>
+              {coreSkills.map((skill) => (
+                <Badge key={skill} className="bg-[#314158] hover:bg-[#314158]/80">
+                  {skill}
+                </Badge>
+              ))}
             </div>
           </div>
         </div>
@@ -219,12 +233,12 @@ export default function Home() {
               <MainTimelineItem
                 id="2024-sii"
                 color="#615fff"
-                title="Product Owner, Dynamic Pricing"
+                title="Product Definition Analyst"
                 company="Amadeus"
                 companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2024-sii")?.companyLinkedIn}
                 period="July 2024 - Present"
-                location="France · via Groupe SII"
-                tags={["Airlines", "Travel", "AI Driven Dynamic Pricing", "API Governance"]}
+                location="France · contractor via SII"
+                tags={["Airlines", "Travel", "API and Data Model Governance", "AI Pricing"]}
                 current={true}
                 connectionId="2024-sii"
                 isExpanded={expandedItems.has("2024-sii")}
@@ -250,8 +264,8 @@ export default function Home() {
               <MainTimelineItem
                 id="2021-bossbusworld"
                 color="#615fff"
-                title="Technical Product Manager (Developer Experience)"
-                company="Bossbusworld"
+                title="Technical Product Manager"
+                company="Bossbus"
                 companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2021-bossbusworld")?.companyLinkedIn}
                 period="January 2021 - November 2022"
                 location="Lagos, Nigeria"

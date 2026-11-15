@@ -21,6 +21,27 @@ import { FeaturedBlogPosts } from "@/components/sections/featured-blog-posts"
 // Add the import for LinkedInFeaturedPosts at the top of the file with the other imports
 import { MediaAppearances } from "@/components/sections/media-appearances"
 import Link from "next/link"
+import {
+  type ExperienceDetail,
+  professionalExperiences,
+  sideProjects,
+  volunteerActivities,
+} from "@/lib/experience"
+
+const coreSkills = [
+  "Inference and API product strategy",
+  "Pricing and packaging",
+  "Usage-based billing and metering",
+  "Developer platforms and portals",
+  "Enterprise discovery",
+  "Success metrics and product analytics",
+  "OpenAPI",
+  "JSON Schema",
+  "MCP servers for AI agents",
+  "ML lifecycle",
+  "ONNX",
+  "MLflow",
+]
 
 export default function Home() {
   // Track expanded items by their IDs
@@ -70,7 +91,7 @@ export default function Home() {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold tracking-tight mb-4">Omolade Jordan Odetara</h1>
           <p className="text-xl text-[#62748e] max-w-2xl mx-auto">
-            Dynamic Pricing AI Product | Deep Tech | Interoperability
+            Technical Product Manager · API platforms, model inference and AI pricing
           </p>
           <div className="flex flex-wrap justify-center gap-2 mt-4">
             <Badge className="bg-[#615fff] hover:bg-[#615fff]/80">Space Exploration</Badge>
@@ -152,12 +173,11 @@ export default function Home() {
               <Award className="mr-2 text-[#ffb86a]" /> Core Skills
             </h2>
             <div className="flex flex-wrap gap-2">
-              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Product Delivery</Badge>
-              <Badge className="bg-[#314158] hover:bg-[#314158]/80">B2B</Badge>
-              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Stakeholder Management</Badge>
-              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Product Strategy</Badge>
-              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Developer Experience</Badge>
-              <Badge className="bg-[#314158] hover:bg-[#314158]/80">Platform Strategy</Badge>
+              {coreSkills.map((skill) => (
+                <Badge key={skill} className="bg-[#314158] hover:bg-[#314158]/80">
+                  {skill}
+                </Badge>
+              ))}
             </div>
           </div>
         </div>
@@ -213,12 +233,12 @@ export default function Home() {
               <MainTimelineItem
                 id="2024-sii"
                 color="#615fff"
-                title="Product Owner, Dynamic Pricing"
+                title="Product Definition Analyst"
                 company="Amadeus"
                 companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2024-sii")?.companyLinkedIn}
                 period="July 2024 - Present"
-                location="France · via Groupe SII"
-                tags={["Airlines", "Travel", "AI Driven Dynamic Pricing", "API Governance"]}
+                location="France · contractor via SII"
+                tags={["Airlines", "Travel", "API and Data Model Governance", "AI Pricing"]}
                 current={true}
                 connectionId="2024-sii"
                 isExpanded={expandedItems.has("2024-sii")}
@@ -244,8 +264,8 @@ export default function Home() {
               <MainTimelineItem
                 id="2021-bossbusworld"
                 color="#615fff"
-                title="Technical Product Manager (Developer Experience)"
-                company="Bossbusworld"
+                title="Technical Product Manager"
+                company="Bossbus"
                 companyLinkedIn={professionalExperiences.find((exp) => exp.id === "2021-bossbusworld")?.companyLinkedIn}
                 period="January 2021 - November 2022"
                 location="Lagos, Nigeria"
@@ -437,370 +457,6 @@ export default function Home() {
     </div>
   )
 }
-
-// First, let's update the ExperienceDetail interface to include a companyLinkedIn field
-interface ExperienceDetail {
-  id: string
-  type: string
-  title: string
-  company?: string
-  companyLinkedIn?: string
-  period: string
-  location?: string
-  color: string
-  tags?: string[]
-  description?: string
-  responsibilities?: string[]
-  achievements?: string[]
-  technologies?: string[]
-  links?: { label: string; url: string }[]
-  slug?: string // Add this line
-  connectionId?: string // Add this for the connection highlighting
-}
-
-// Now update the professionalExperiences array to include LinkedIn URLs
-const professionalExperiences: ExperienceDetail[] = [
-  {
-    id: "2024-sii",
-    type: "Professional Experience",
-    title: "Product Owner, Dynamic Pricing",
-    company: "Amadeus",
-    companyLinkedIn: "https://www.linkedin.com/company/amadeus/",
-    period: "July 2024 - Present",
-    location: "France · via Groupe SII",
-    color: "#615fff",
-    tags: ["Airlines", "Travel", "AI Driven Dynamic Pricing", "API Governance"],
-    description:
-      "External contractor to Amadeus through Groupe SII, working on airline dynamic pricing. Product Definition Analyst from July 2024, Product Owner from June 2025, and Product Definition Analyst again since December 2025.",
-    responsibilities: [
-      "Implement and manage a centralized dynamic pricing cockpit that unifies pricing across all products, services and sales channels",
-      "Give airline pricing analysts precise control over AI-driven pricing strategies, so they can react quickly to the market",
-      "Give pricing analysts real-time visibility into revenue trends and competitor pricing",
-      "Own API and data model governance",
-      "Write technical studies and solution overviews for dynamic pricing enhancements, and validate them with developers, QA and stakeholders",
-    ],
-    links: [{ label: "Groupe SII", url: "https://www.linkedin.com/company/groupe-sii/" }],
-  },
-  {
-    id: "2023-leanspace",
-    type: "Professional Experience",
-    title: "Product Owner",
-    company: "Leanspace",
-    companyLinkedIn: "https://www.linkedin.com/company/leanspace/",
-    period: "November 2022 - August 2023",
-    location: "Strasbourg, France",
-    color: "#615fff",
-    tags: ["Space", "Satellites", "SaaS"],
-    description:
-      "Led product development for a cloud-based platform designed to simplify satellite operations and management. Focused on creating scalable microservices for telemetry processing and anomaly detection.",
-    responsibilities: [
-      "Led development of telemetry and anomaly detection services",
-      "Created microservices for managing space assets",
-      "Directed R&D for data processing technologies",
-      "Developed third-party developer platform strategy",
-      "Managed product roadmap and backlog prioritization",
-    ],
-    achievements: [
-      "Launched new telemetry processing service that reduced data processing time by 40%",
-      "Designed and implemented RESTful APIs for third-party integrations",
-      "Improved system reliability with comprehensive monitoring solutions",
-    ],
-    technologies: ["Java", "Spring Boot", "Kubernetes", "AWS", "Kafka", "MongoDB"],
-  },
-  {
-    id: "2021-bossbusworld",
-    type: "Professional Experience",
-    title: "Technical Product Manager (Developer Experience)",
-    company: "Bossbusworld",
-    companyLinkedIn: "https://www.linkedin.com/company/bossbusworld/",
-    period: "January 2021 - November 2022",
-    location: "Lagos, Nigeria",
-    color: "#615fff",
-    tags: ["Travel", "SaaS", "Developer Ecosystem"],
-    description:
-      "Led the development of a platform strategy for third-party developers in the travel industry, focusing on API integrations with airlines and fleet management systems.",
-    responsibilities: [
-      "Created platform strategy for third-party developers",
-      "Integrated services with airlines and flight ticketing companies",
-      "Developed vehicle fleet-passenger marketplace",
-      "Built enterprise platform for vehicle fleet owners",
-      "Managed developer documentation and support systems",
-    ],
-    achievements: [
-      "Grew developer ecosystem from 5 to 50+ active partners",
-      "Implemented OAuth 2.0 authentication for secure API access",
-      "Created comprehensive API documentation that reduced support tickets by 35%",
-    ],
-    technologies: ["Node.js", "Express", "MongoDB", "REST APIs", "OAuth 2.0", "Swagger"],
-  },
-  {
-    id: "2019-pledre",
-    type: "Professional Experience",
-    title: "Product Manager",
-    company: "Pledre",
-    companyLinkedIn: "https://www.linkedin.com/company/pledre/",
-    period: "January 2019 - January 2021",
-    location: "Lagos, Nigeria",
-    color: "#615fff",
-    tags: ["Education", "Infrastructure", "B2B"],
-    description:
-      "Managed the development of educational technology solutions for schools and businesses, with a focus on payment processing and digital learning platforms.",
-    responsibilities: [
-      "Integrated Stripe for international currency processing",
-      "Conducted market research on digital education trends",
-      "Led product development with agile methodologies",
-      "Established cross-departmental collaboration",
-      "Managed product lifecycle from conception to launch",
-    ],
-    achievements: [
-      "Successfully implemented Stripe payment gateway for international transactions",
-      "Launched digital learning platform used by 20+ educational institutions",
-      "Reduced development cycle time by 25% through improved agile processes",
-    ],
-    technologies: ["React", "Node.js", "Stripe API", "PostgreSQL", "AWS"],
-  },
-  {
-    id: "2017-artquake",
-    type: "Professional Experience",
-    title: "Software Engineer",
-    company: "ArtQuake",
-    companyLinkedIn: "https://www.linkedin.com/company/artquake/",
-    period: "May 2017 - December 2018",
-    location: "Lagos, Nigeria",
-    color: "#615fff",
-    tags: ["UI", "Interactivity", "Digital Experiences"],
-    description:
-      "Developed interactive front-end solutions for digital media projects, focusing on user experience and responsive design.",
-    responsibilities: [
-      "Built front-end software for multimedia projects",
-      "Developed reusable React.js components and libraries",
-      "Enhanced web usability through developer-designer collaboration",
-      "Delivered multimedia content for digital magazine platform",
-    ],
-    achievements: [
-      "Created component library that reduced development time by 30%",
-      "Implemented responsive design system used across multiple projects",
-      "Improved page load performance by 45% through code optimization",
-    ],
-    technologies: ["React", "JavaScript", "HTML5", "CSS3", "GSAP", "Webpack"],
-  },
-]
-
-// Update the volunteerActivities array to include LinkedIn URLs for organizations
-const volunteerActivities: ExperienceDetail[] = [
-  {
-    id: "vol-2023-mva",
-    type: "Volunteer Space Activity",
-    title: "MVA - Lunar Technical Coordination",
-    company: "Moon Village Association",
-    companyLinkedIn: "https://www.linkedin.com/company/moon-village-association/",
-    period: "September 2023 - Present",
-    color: "#ffb86a",
-    description:
-      "Member of the Global Expert Group on Sustainable Lunar Activities (GEGSLA), focusing on coordinating technical standards, protocols, and best practices to ensure safe and efficient lunar activities.",
-    responsibilities: [
-      "Coordinate technical standards and protocols for lunar activities",
-      "Facilitate information exchange among organizations planning lunar missions",
-      "Contribute to safety and efficiency guidelines for lunar operations",
-      "Participate in working group meetings and technical discussions",
-    ],
-    achievements: [
-      "Contributed to technical standards document submitted to UN COPUOS",
-      "Helped establish framework for lunar mission coordination",
-      "Facilitated collaboration between international space agencies",
-    ],
-    links: [{ label: "Moon Village Association", url: "https://moonvillageassociation.org/" }],
-  },
-  {
-    id: "vol-2021-mva",
-    type: "Volunteer Space Activity",
-    title: "MVA - Interoperability Subgroup Co-Chair",
-    company: "Moon Village Association",
-    companyLinkedIn: "https://www.linkedin.com/company/moon-village-association/",
-    period: "January 2021 - September 2023",
-    color: "#ffb86a",
-    description:
-      "Co-chaired the Interoperability and Compatibility subgroup within the Global Expert Group on Sustainable Lunar Activities (GEGSLA), preparing materials for submission to the UN Committee on the Peaceful Use of Outer Space (UNCOPUOS).",
-    responsibilities: [
-      "Co-led the Interoperability and Compatibility subgroup",
-      "Prepared technical materials for UN COPUOS submissions",
-      "Coordinated international expert contributions",
-      "Organized working group meetings and discussions",
-    ],
-    achievements: [
-      "Successfully developed interoperability framework for lunar missions",
-      "Led the creation of technical standards document adopted by multiple space agencies",
-      "Established collaboration protocols between commercial and governmental entities",
-    ],
-    links: [
-      { label: "Moon Village Association", url: "https://moonvillageassociation.org/" },
-      { label: "UN COPUOS", url: "https://www.unoosa.org/oosa/en/ourwork/copuos/index.html" },
-    ],
-  },
-  {
-    id: "vol-2020-spacehubs",
-    type: "Volunteer Space Activity",
-    title: "Spacehubs Africa Analyst",
-    company: "Spacehubs Africa",
-    companyLinkedIn: "https://www.linkedin.com/company/spacehubs-africa/",
-    period: "August 2020 - August 2021",
-    color: "#ffb86a",
-    description:
-      "Served as a Business and Communication Analyst for Spacehubs Africa, working to promote space technology development and applications across the African continent.",
-    responsibilities: [
-      "Analyzed business opportunities for space technology in Africa",
-      "Developed communication strategies for space technology awareness",
-      "Facilitated partnerships between African space organizations",
-      "Conducted research on space technology applications for development",
-    ],
-    achievements: [
-      "Created comprehensive report on space technology applications for sustainable development in Africa",
-      "Established communication channels reaching over 5,000 space enthusiasts",
-      "Helped organize virtual space technology workshops with 500+ participants",
-    ],
-  },
-  {
-    id: "vol-2020-spaceapps",
-    type: "Volunteer Space Activity",
-    title: "NASA SpaceApps Lagos Lead",
-    company: "NASA SpaceApps Lagos",
-    companyLinkedIn: "https://www.linkedin.com/company/nasa-space-apps-challenge/",
-    period: "August 2020 - August 2021",
-    color: "#ffb86a",
-    description:
-      "Led the coordination of NASA's Space Apps Challenge in Lagos, Nigeria, organizing a 48-hour international hackathon focused on space exploration and developing solutions to global challenges.",
-    responsibilities: [
-      "Coordinated the local organization of NASA's Space Apps Challenge",
-      "Recruited participants and mentors for the hackathon",
-      "Secured sponsorships and partnerships for the event",
-      "Facilitated problem-solving sessions during the hackathon",
-    ],
-    achievements: [
-      "Successfully organized hackathon with 150+ participants",
-      "Mentored teams that developed innovative solutions to NASA challenges",
-      "Established partnerships with 5 local tech companies for event sponsorship",
-    ],
-    links: [{ label: "NASA Space Apps Challenge", url: "https://www.spaceappschallenge.org/" }],
-  },
-  {
-    id: "vol-2020-sgac",
-    type: "Volunteer Space Activity",
-    title: "SGAC - Commercial Space Project",
-    company: "Space Generation Advisory Council",
-    companyLinkedIn: "https://www.linkedin.com/company/space-generation-advisory-council/",
-    period: "July 2020 - August 2021",
-    color: "#ffb86a",
-    description:
-      "Member of the Commercial Space Project Group (CSPG) within the Space Generation Advisory Council, the largest network of young professionals and alumni in the space industry.",
-    responsibilities: [
-      "Contributed to research on commercial space developments",
-      "Participated in working group discussions and projects",
-      "Helped develop policy recommendations for commercial space activities",
-      "Collaborated with international team members on project deliverables",
-    ],
-    achievements: [
-      "Co-authored white paper on commercial space opportunities in developing nations",
-      "Contributed to policy recommendations presented at international space conference",
-      "Helped organize virtual workshop on commercial space applications",
-    ],
-    links: [{ label: "Space Generation Advisory Council", url: "https://generation.org/" }],
-  },
-  {
-    id: "vol-2020-spacegen",
-    type: "Volunteer Space Activity",
-    title: "SpaceGen United Delegate",
-    company: "Space Generation Advisory Council",
-    companyLinkedIn: "https://www.linkedin.com/company/space-generation-advisory-council/",
-    period: "July 2020",
-    color: "#ffb86a",
-    description:
-      "Selected as a delegate for the SpaceGen United online Congress, representing Nigeria in discussions about the future of space exploration and applications.",
-    responsibilities: [
-      "Participated in working groups and panel discussions",
-      "Represented Nigerian perspective on space development",
-      "Contributed to congress recommendations and outcomes",
-      "Networked with international space professionals",
-    ],
-    achievements: [
-      "Actively contributed to working group on space applications for sustainable development",
-      "Presented ideas that were incorporated into final congress recommendations",
-      "Established connections with international space professionals",
-    ],
-    links: [{ label: "Space Generation Advisory Council", url: "https://spacegeneration.org/" }],
-  },
-]
-
-const sideProjects: ExperienceDetail[] = [
-  {
-    id: "side-monizoom",
-    type: "Side Project",
-    title: "MoniZoom",
-    period: "Mar - Jun 2023",
-    color: "#00d5be",
-    description:
-      "Developed a borderless banking platform that accelerates global reach with reliable financial services. Part of the FANDI venture studio portfolio.",
-    technologies: ["React", "Next.js", "Tailwind CSS", "Financial APIs"],
-    links: [
-      { label: "MoniZoom Website", url: "https://monizoom.vercel.app/" },
-      { label: "FANDI Venture Studio", url: "/projects/founders-and-innovators" },
-    ],
-    connectionId: "2023-leanspace",
-    slug: "monizoom",
-  },
-  {
-    id: "side-nesthub",
-    type: "Side Project",
-    title: "NestHub",
-    period: "May - Dec 2021",
-    color: "#00d5be",
-    description:
-      "Created a platform for connecting property developers with potential homeowners and investors. Part of the FANDI venture studio portfolio.",
-    technologies: ["Node.js", "Express", "MongoDB", "React"],
-    connectionId: "2021-bossbusworld",
-    slug: "nesthub",
-    links: [{ label: "FANDI Venture Studio", url: "/projects/founders-and-innovators" }],
-  },
-  {
-    id: "side-zyleme",
-    type: "Side Project",
-    title: "Zyleme",
-    period: "Jan - Jul 2020",
-    color: "#00d5be",
-    description: "Developed a learning management system focused on skill development for tech professionals.",
-    technologies: ["Vue.js", "Firebase", "EdTech"],
-    connectionId: "2019-pledre",
-    slug: "zyleme",
-  },
-  {
-    id: "side-founders",
-    type: "Side Project",
-    title: "Co-founder and Lead Product Manager",
-    company: "Founders and Innovators (FANDI)",
-    period: "January 2021 - November 2022",
-    color: "#00d5be",
-    description:
-      "Co-founded a venture studio and holding company that launched multiple startups across transportation, fintech, real estate, healthcare, and blockchain sectors.",
-    technologies: ["Venture Studio", "Startup Incubation", "Product Strategy", "Business Development"],
-    links: [
-      { label: "FANDI Portfolio", url: "/projects/founders-and-innovators" },
-      { label: "Crunchbase Profile", url: "https://www.crunchbase.com/organization/founders-and-innovators" },
-    ],
-    connectionId: "2021-bossbusworld", // Updated to match the correct timeline
-    slug: "founders-and-innovators",
-  },
-  {
-    id: "side-talahive",
-    type: "Side Project",
-    title: "TalaHive",
-    period: "Sep 2018 - Feb 2019",
-    color: "#00d5be",
-    description:
-      "Created a shared studio space and community for visual artists with professional-grade equipment, resources, and a collaborative environment.",
-    technologies: ["Studio Design", "Community Building", "Membership Models", "Creative Spaces", "Artist Resources"],
-    connectionId: "2017-artquake",
-    slug: "talahive",
-  },
-]
 
 interface EducationItemProps {
   institution: string
